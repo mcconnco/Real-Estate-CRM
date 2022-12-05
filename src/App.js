@@ -21,6 +21,9 @@ return (
 		<Route path='/transactions' element={<Transactions/>} />
 	</Routes>
 	</Router>
+	<div>
+		Test!
+	</div>
 );
 }
 
