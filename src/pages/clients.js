@@ -8,7 +8,7 @@ return (
 				<div class="box-main">
 					<div class="secondHalf">
 						<h1 class="text-big" id="program">
-							JavaScript Tutorial
+							JavaScript Tut
 						</h1>
 						<p class="text-small">
 							JavaScript is the world most popular
