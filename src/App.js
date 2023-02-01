@@ -1,27 +1,49 @@
-import React from 'react';
+import React from "react";
 import './App.css';
-import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Routes, Route}
-	from 'react-router-dom';
-import Home from './pages';
-import Clients from './pages/clients';
-import Licensees from './pages/licensees';
-import Properties from './pages/properties';
-import Transactions from './pages/transactions';
 
-function App() {
-return (
-	<Router>
-	<Navbar />
-	<Routes>
-		<Route exact path='/' element={<Home />} />
-		<Route path='/clients' element={<Clients/>} />
-		<Route path='/licensees' element={<Licensees/>} />
-		<Route path='/properties' element={<Properties/>} />
-		<Route path='/transactions' element={<Transactions/>} />
-	</Routes>
-	</Router>
-);
-}
+import Header from "./components/header";
+import Route from "./components/route";
+import Footer from "./components/footer";
 
-export default App;
+import Dash from "./pages/index";
+import Clients from "./pages/clients";
+import Licensees from "./pages/licensees";
+import Login from "./pages/login";
+import Properties from "./pages/properties";
+import Transactions from "./pages/transactions";
+
+export default () => {
+  return (
+    <div className="ui-container">
+      <Header />
+      <div className="row">
+        <div className="column side">
+          <h2>Side Left</h2>
+        </div>
+
+        <div className="column middle">
+          <Route path="/">
+            <Dash />
+          </Route>
+          <Route path="/clients">
+            <Clients />
+          </Route>
+          <Route path="/licensees">
+            <Licensees />
+          </Route>
+          <Route path="/properties">
+            <Properties />
+          </Route>
+          <Route path="/transactions">
+            <Transactions />
+          </Route>
+        </div>
+
+        <div className="column side">
+          <Login />
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+};

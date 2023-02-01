@@ -1,37 +1,23 @@
 import React from 'react';
-import '../App.css';
+import './pages.css';
 
 const Clients = () => {
-return (
-	<div>
-	<section class="section">
-				<div class="box-main">
-					<div class="secondHalf">
-						<h1 class="text-big" id="program">
-							JavaScript Tutorial
+	return (
+		<div>
+			<section>
+				<div>
+					<div>
+						<h1>
+							Clients
 						</h1>
-						<p class="text-small">
-							JavaScript is the world most popular
-							lightweight, interpreted compiled
-							programming language. It is also
-							known as scripting language for
-							web pages. It is well-known for
-							the development of web page many
-							non-browser environments also use
-							it. JavaScript can be used for
-							Client-side developments as well
-							as Server-side developments.
+						<p>
+							Client page will contain a list of clients for the logged in user with the ability to add/remove/edit clients
 						</p>
 					</div>
 				</div>
 			</section>
-			<footer className="footer">
-				<p className="text-footer">
-					Copyright ©-All rights are reserved
-				</p>
-			</footer>
-	</div>
-);
+		</div>
+	);
 };
 
-export default Clients;
+export default Clients
