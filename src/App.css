@@ -7,6 +7,7 @@ body {
 }
 
 .navBar {
+  /*position: relative;*/
   overflow: hidden;
   background: #dc5303;
 }
@@ -20,10 +21,57 @@ body {
   text-decoration: none;
 }
 
-.navBar a:hover {
+/*.navBar a:hover {
   color: black;
+}*/
+
+.navBar button{
+  position:fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  cursor: pointer;
 }
 
+/*For hamburger menu*/
+.menuNav{
+  overflow-y: hidden;
+  overflow-x: hidden;
+  list-style: none;
+  position: fixed;
+  top: 0;
+  background: black;
+  /*hacky method of getting the menu to display properly*/
+  left: -40px;
+  bottom: 0;
+  height: 120vh;
+  width: 0;
+  overflow: hidden;
+  max-width: 290px;
+  z-index: 9;
+}
+
+.menuNav.showMenu{
+  width: 100%;
+}
+
+/*styling for various hamburger menu elements*/
+.burger-option{
+  color: #fff;
+  float: left;
+  clear: left;
+
+}
+.burger-footer{
+  color: #fff;
+  position: fixed;
+  bottom: 80px;
+}
+.burger-logout{
+  color: #fff;
+  position: fixed;
+  bottom: 40px;
+}
 .footer {
 	background-color: #000;
 	}

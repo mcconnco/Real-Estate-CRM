@@ -11,6 +11,7 @@ import Licensees from "./pages/licensees";
 import Login from "./pages/login";
 import Properties from "./pages/properties";
 import Transactions from "./pages/transactions";
+import Settings from "./pages/settings"
 
 export default () => {
   return (
@@ -36,6 +37,12 @@ export default () => {
           </Route>
           <Route path="/transactions">
             <Transactions />
+          </Route>
+          <Route path="/settings">
+            <Settings />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
         </div>
 
