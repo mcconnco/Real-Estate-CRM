@@ -9,10 +9,10 @@ body {
 .navBar {
   overflow: hidden;
   background: #dc5303;
+  justify-content: center;
 }
 
 .navBar a {
-  float: left;
   display: block;
   color: #fff;
   text-align: center;
