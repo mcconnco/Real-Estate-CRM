@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Nav, NavLink, NavMenu} from "./NavbarElements";
 import '../App.css';
 
 const Header = () => {
