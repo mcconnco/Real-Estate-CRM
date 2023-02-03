@@ -7,7 +7,6 @@ body {
 }
 
 .navBar {
-  /*position: relative;*/
   overflow: hidden;
   background: #dc5303;
 }
@@ -21,9 +20,9 @@ body {
   text-decoration: none;
 }
 
-/*.navBar a:hover {
+.navBar a:hover {
   color: black;
-}*/
+}
 
 .navBar button{
   position:fixed;
@@ -74,7 +73,7 @@ body {
 }
 .footer {
 	background-color: #000;
-	}
+}
 
 .text-footer {
 	text-align: center;
