@@ -20,6 +20,10 @@ body {
   text-decoration: none;
 }
 
+table th, td {
+  border: 1px solid black
+}
+
 .navBar a:hover {
   color: black;
 }
