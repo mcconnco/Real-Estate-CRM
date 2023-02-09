@@ -21,7 +21,7 @@ body {
 }
 
 .navBar a:hover {
-  color: black;
+  border-color: black;
 }
 
 .navBar button{
@@ -57,8 +57,11 @@ body {
 /*styling for various hamburger menu elements*/
 .burger-option{
   color: #fff;
-  float: left;
+  float: center;
   clear: left;
+  border-style: solid;
+  border-width: thick;
+  border-color: #dc5303;
 
 }
 .burger-footer{
