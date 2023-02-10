@@ -1,35 +1,35 @@
 .ButtonGroup {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-row: auto auto;
-    gap: 5px;
-    justify-content: center;
-  }
-  
-  .dashButton {
-    background-color: rgb(180, 180, 180);
-    color: rgb(0, 0, 0);
-    font-size: 20px;
-    margin: 5px;
-    height: 250px;
-    width: 250px;
-    cursor: pointer;
-  }
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-row: auto auto;
+  gap: 5px;
+  justify-content: center;
+}
 
-  .dialog {
-    margin: 5px;
-    border: 1px solid black;
-    padding: 5px;
-    box-sizing: border-box;
-  }
-  
-  .userInput {
-    margin-bottom: 5px;
-  }
-  
-  .warning {
-    background: rgb(255, 215, 215);
-    border: 1px solid red;
-    padding: 5px;
-    margin: 5px;
-  }
+.dashButton {
+  background-color: rgb(180, 180, 180);
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  margin: 5px;
+  height: 250px;
+  width: 250px;
+  cursor: pointer;
+}
+
+.dialog {
+  margin: 5px;
+  border: 1px solid black;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.userInput {
+  margin-bottom: 5px;
+}
+
+.warning {
+  background: rgb(255, 215, 215);
+  border: 1px solid red;
+  padding: 5px;
+  margin: 5px;
+}
