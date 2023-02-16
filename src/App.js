@@ -4,6 +4,7 @@ import './App.css';
 import Header from "./components/header";
 import Route from "./components/route";
 import Footer from "./components/footer";
+import Hamburger from "./components/hamburger";
 
 import Dash from "./pages/index";
 import Clients from "./pages/clients";
@@ -19,11 +20,14 @@ export default () => {
       <Header />
       <div className="row">
         <div className="column side">
-          <h2>Side Left</h2>
+          <Hamburger />
         </div>
 
         <div className="column middle">
           <Route path="/">
+            <Login />
+          </Route>
+          <Route path="/dash">
             <Dash />
           </Route>
           <Route path="/clients">
@@ -47,7 +51,7 @@ export default () => {
         </div>
 
         <div className="column side">
-          <Login />
+        <h2>Side Right</h2>
         </div>
       </div>
       <Footer />
