@@ -5,6 +5,7 @@ import Header from "./components/header";
 import Route from "./components/route";
 import Footer from "./components/footer";
 
+
 import Dash from "./pages/index";
 import Clients from "./pages/clients";
 import Licensees from "./pages/licensees";
@@ -19,6 +20,7 @@ export default () => {
       <Header />
       <div className="row">
         <div className="column side">
+ 
         </div>
 
         <div className="column middle">
