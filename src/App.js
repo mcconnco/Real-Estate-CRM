@@ -4,7 +4,6 @@ import './App.css';
 import Header from "./components/header";
 import Route from "./components/route";
 import Footer from "./components/footer";
-import Hamburger from "./components/hamburger";
 
 import Dash from "./pages/index";
 import Clients from "./pages/clients";
@@ -20,7 +19,6 @@ export default () => {
       <Header />
       <div className="row">
         <div className="column side">
-          <Hamburger />
         </div>
 
         <div className="column middle">
