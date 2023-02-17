@@ -79,6 +79,15 @@ body {
   position: fixed;
   bottom: 40px;
 }
+
+/*styling for the button that leads to the account page*/
+.account-button{
+  position: fixed;
+  justify-content: right;
+  right: 0;
+  top: 0;
+
+}
 .footer {
 	background-color: #000;
 }

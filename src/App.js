@@ -12,7 +12,8 @@ import Licensees from "./pages/licensees";
 import Login from "./pages/login";
 import Properties from "./pages/properties";
 import Transactions from "./pages/transactions";
-import Settings from "./pages/settings"
+import Settings from "./pages/settings";
+import Account from "./pages/account"
 
 export default () => {
   return (
@@ -47,6 +48,9 @@ export default () => {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/account">
+            <Account />
           </Route>
         </div>
 
