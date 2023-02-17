@@ -7,12 +7,13 @@ body {
 }
 
 .navBar {
+  /*position: relative;*/
   overflow: hidden;
   background: #dc5303;
-  justify-content: center;
 }
 
 .navBar a {
+  float: left;
   display: block;
   color: #fff;
   text-align: center;
@@ -20,14 +21,9 @@ body {
   text-decoration: none;
 }
 
-.licensee_table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-
-.navBar a:hover {
-  border-color: black;
-}
+/*.navBar a:hover {
+  color: black;
+}*/
 
 .navBar button{
   position:fixed;
@@ -62,11 +58,8 @@ body {
 /*styling for various hamburger menu elements*/
 .burger-option{
   color: #fff;
-  float: center;
+  float: left;
   clear: left;
-  border-style: solid;
-  border-width: thick;
-  border-color: #dc5303;
 
 }
 .burger-footer{
@@ -79,18 +72,9 @@ body {
   position: fixed;
   bottom: 40px;
 }
-
-/*styling for the button that leads to the account page*/
-.account-button{
-  position: fixed;
-  justify-content: right;
-  right: 0;
-  top: 0;
-
-}
 .footer {
 	background-color: #000;
-}
+	}
 
 .text-footer {
 	text-align: center;
