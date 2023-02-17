@@ -55,7 +55,7 @@ export default () => {
         </div>
 
         <div className="column side">
-        <h2>Side Right</h2>
+        
         </div>
       </div>
       <Footer />
