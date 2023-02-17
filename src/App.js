@@ -5,13 +5,15 @@ import Header from "./components/header";
 import Route from "./components/route";
 import Footer from "./components/footer";
 
+
 import Dash from "./pages/index";
 import Clients from "./pages/clients";
 import Licensees from "./pages/licensees";
 import Login from "./pages/login";
 import Properties from "./pages/properties";
 import Transactions from "./pages/transactions";
-import Settings from "./pages/settings"
+import Settings from "./pages/settings";
+import Account from "./pages/account"
 
 export default () => {
   return (
@@ -19,11 +21,14 @@ export default () => {
       <Header />
       <div className="row">
         <div className="column side">
-          <h2>Side Left</h2>
+ 
         </div>
 
         <div className="column middle">
           <Route path="/">
+            <Login />
+          </Route>
+          <Route path="/dash">
             <Dash />
           </Route>
           <Route path="/clients">
@@ -44,10 +49,13 @@ export default () => {
           <Route path="/login">
             <Login />
           </Route>
+          <Route path="/account">
+            <Account />
+          </Route>
         </div>
 
         <div className="column side">
-          <Login />
+        
         </div>
       </div>
       <Footer />
