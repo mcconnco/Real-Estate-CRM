@@ -24,7 +24,7 @@ const Header = () => {
                 <button onClick={toggleMenu}>
                     <img src="https://i.ibb.co/LJTPSJt/menu-burger-2.png" alt="menu-burger-2"></img>
                     {navbarOpen}
-                    </button>
+                </button>
                 <ul className={`menuNav ${navbarOpen ? " showMenu" : ""}`}>
                     <a href = "/clients" className = "burger-option">Clients</a>
                     <a href = "/licensees" className = "burger-option">Licensees</a>
