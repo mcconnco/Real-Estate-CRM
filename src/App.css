@@ -25,8 +25,10 @@ body {
   border-collapse: collapse;
 }
 
+/*Styling for when the user hovers the cursor over a burger option*/
 .navBar a:hover {
   border-color: black;
+  font-weight: bold;
 }
 
 .navBar button{
@@ -43,7 +45,7 @@ body {
   overflow-x: hidden;
   list-style: none;
   position: fixed;
-  top: 0;
+  top: 16px;
   background: black;
   /*hacky method of getting the menu to display properly*/
   left: -40px;
@@ -74,10 +76,16 @@ body {
   position: fixed;
   bottom: 80px;
 }
+.burger-footer:hover{
+  color: #dc5303;
+}
 .burger-logout{
   color: #fff;
   position: fixed;
   bottom: 40px;
+}
+.burger-logout:hover{
+  color: #dc5303;
 }
 
 /*styling for the button that leads to the account page*/
@@ -86,8 +94,12 @@ body {
   justify-content: right;
   right: 0;
   top: 0;
-
+  visibility: visible;
 }
+.account-button-container{
+  visibility: hidden;
+}
+
 .footer {
 	background-color: #000;
 }
