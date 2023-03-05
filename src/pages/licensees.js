@@ -52,7 +52,13 @@ const Licensees = () => {
 			t += tr;
 		}
 		document.getElementById("licensee_table").innerHTML += t;
+
 	}
+
+	useEffect(()=>{
+		getUsersData()
+	})
+
 	return (
 		<div>
 			<section>
