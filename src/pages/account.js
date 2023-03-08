@@ -33,6 +33,10 @@ const Account = () => {
                             <li>Office Address: ****</li>
                         </ul>
                         <h1>
+                            Account Birthday:
+                        </h1>
+                        <p>June 27th</p>
+                        <h1>
                             Delete Account
                         </h1>
 					</div>

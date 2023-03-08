@@ -52,6 +52,7 @@ export default () => {
           <Route path="/account">
             <Account />
           </Route>
+
         </div>
 
         <div className="column side">
