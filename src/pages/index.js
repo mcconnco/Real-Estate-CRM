@@ -13,12 +13,12 @@ const Dash = () => {
 						<a href='/licensees'>
 							<button className='dashButton'>Licensees</button>
 						</a>
-						<a href='/properties'>
+						{/*<a href='/properties'>
 							<button className='dashButton'>Properties</button>
-						</a>
-						<a href='/transactions'>
+						</a>*/}
+						{/*<a href='/transactions'>
 							<button className='dashButton'>Transactions</button>
-						</a>
+						</a>*/}
 					</div>
 				</div>
 			</section>

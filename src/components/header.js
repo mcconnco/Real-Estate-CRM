@@ -28,8 +28,8 @@ const Header = () => {
                 <ul className={`menuNav ${navbarOpen ? " showMenu" : ""}`}>
                     <a href = "/clients" className = "burger-option">Clients</a>
                     <a href = "/licensees" className = "burger-option">Licensees</a>
-                    <a href = "/properties" className = "burger-option">Properties</a>
-                    <a href = "/transactions" className = "burger-option">Transactions</a>
+                    {/*<a href = "/properties" className = "burger-option">Properties</a>*/}
+                    {/*<a href = "/transactions" className = "burger-option">Transactions</a>*/}
                     <a href = "/account" className = "burger-footer">Settings</a>
                     <a href = "/" className = "burger-logout">Logout/Change User</a>
                 </ul>
