@@ -16,12 +16,18 @@ import Settings from "./pages/settings";
 import Account from "./pages/account"
 
 export default () => {
+  var currentUser = []
+
+  if (localStorage.getItem("user_details")) {
+    currentUser = JSON.parse(atob(localStorage.getItem("user_details")))
+  }
+
   return (
     <div className="ui-container">
       <Header />
       <div className="row">
         <div className="column side">
- 
+
         </div>
 
         <div className="column middle">
@@ -29,34 +35,34 @@ export default () => {
             <Login />
           </Route>
           <Route path="/dash">
-            <Dash />
+            {currentUser.id_role === 1 ? <Dash /> : <Login />}
           </Route>
           <Route path="/clients">
-            <Clients />
+            {currentUser.id_role === 1 ? <Clients /> : <Login />}
           </Route>
           <Route path="/licensees">
-            <Licensees />
+            {currentUser.id_role === 1 ? <Licensees /> : <Login />}
           </Route>
           <Route path="/properties">
-            <Properties />
+            {currentUser.id_role === 1 ? <Properties /> : <Login />}
           </Route>
           <Route path="/transactions">
-            <Transactions />
+            {currentUser.id_role === 1 ? <Transactions /> : <Login />}
           </Route>
           <Route path="/settings">
-            <Settings />
+            {currentUser.id_role === 1 ? <Settings /> : <Login />}
           </Route>
           <Route path="/login">
             <Login />
           </Route>
           <Route path="/account">
-            <Account />
+            {currentUser.id_role === 1 ? <Account /> : <Login />}
           </Route>
 
         </div>
 
         <div className="column side">
-        
+
         </div>
       </div>
       <Footer />
