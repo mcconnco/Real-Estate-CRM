@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
+import PopupNewAgent from './Popup';
 import './pages.css';
+import popupNewAgent from './Popup';
 const { myHttpGet } = require('../service/httpService');
 const { myHttpPost } = require('../service/httpService');
 
@@ -7,7 +9,7 @@ const Licensees = () => {
 
 	function createLicensee() {
 		var id_user = document.getElementById('id_user_input').value
-		var agent_number = document.getElementById('licensee_input').value
+		var agent_number = document.getElementById('id_licensee_input').value
 		createAgent(id_user, agent_number);
 
 	}
@@ -72,15 +74,15 @@ const Licensees = () => {
 						</p>
 
 						<label for="fname">User:</label>
-						<input type="text" id="id_user_input" placeholder="User ID"></input><br />
+						<input type="text" id="id_user_input" placeholder="User ID"></input><br/>
 						<label for="fname">Licencee Number:</label>
-						<input type="text" id="licensee_input" placeholder="Unique Agent Number"></input><br />
-						<button onClick={createLicensee}>
-							Create Licensee
-						</button>
-						<button onClick={getUsersData}>
-							Get Users
-						</button>
+						<input type="text" id="id_licensee_input" placeholder="Unique Agent Number"></input><br/>
+						<div>
+							<PopupNewAgent/>
+						</div>
+						{/*<button onClick={PopupNewAgent}>
+							Create New Licensee
+						</button>*/}
 						<table class="licensee_table" id="licensee_table">
 							<tr>
 								<th>User ID</th>
