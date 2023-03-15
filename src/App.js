@@ -35,28 +35,28 @@ export default () => {
             <Login />
           </Route>
           <Route path="/dash">
-            {currentUser.id_role === 1 ? <Dash /> : <Login />}
+            {currentUser && currentUser.id_role === 1 ? <Dash /> : <Login />}
           </Route>
           <Route path="/clients">
-            {currentUser.id_role === 1 ? <Clients /> : <Login />}
+            {currentUser && currentUser.id_role === 1 ? <Clients /> : <Login />}
           </Route>
           <Route path="/licensees">
-            {currentUser.id_role === 1 ? <Licensees /> : <Login />}
+            {currentUser && currentUser.id_role === 1 ? <Licensees /> : <Login />}
           </Route>
           <Route path="/properties">
-            {currentUser.id_role === 1 ? <Properties /> : <Login />}
+            {currentUser && currentUser.id_role === 1 ? <Properties /> : <Login />}
           </Route>
           <Route path="/transactions">
-            {currentUser.id_role === 1 ? <Transactions /> : <Login />}
+            {currentUser && currentUser.id_role === 1 ? <Transactions /> : <Login />}
           </Route>
           <Route path="/settings">
-            {currentUser.id_role === 1 ? <Settings /> : <Login />}
+            {currentUser && currentUser.id_role === 1 ? <Settings /> : <Login />}
           </Route>
           <Route path="/login">
             <Login />
           </Route>
           <Route path="/account">
-            {currentUser.id_role === 1 ? <Account /> : <Login />}
+            {currentUser && currentUser.id_role === 1 ? <Account /> : <Login />}
           </Route>
 
         </div>

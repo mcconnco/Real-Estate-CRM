@@ -49,14 +49,14 @@ function PopupNewAgent() {
                             last_name:
                             <input type="text" name="last_name" value={formData.last_name} onChange={handleInputChange}/><br></br>
                         </label>
-                        <label>
+                        {/*<label>
                             email:
                             <input type="text" name="email" value={formData.email} onChange={handleInputChange}/><br></br>
                         </label>
                         <label>
                             phone_number:
                             <input type="text" name="phone_number" value={formData.phone_number} onChange={handleInputChange}/><br></br>
-                        </label>
+                       </label>*/}
                         <button type="submit">Submit</button>
                     </form>
                     <button onClick={togglePopup}>Close Popup</button>
