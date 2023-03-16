@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './pages.css';
-const { myHttpGet } = require('../service/httpService');
+const { myHttpGetVal } = require('../service/httpService');
 const { myHttpPost } = require('../service/httpService');
 
 const Clients = () => {
 
 	function createClient() {
-		var id_agent =  document.getElementById('id_agent').value;
-		
+		var id_agent =  document.getElementById('id_agent').value; // This should come from localstorage
 		var first_name = document.getElementById('first_name').value;
 		var last_name = document.getElementById('last_name').value;
 		var address = document.getElementById('address').value;
@@ -15,12 +14,65 @@ const Clients = () => {
 		var email = document.getElementById('email').value;
 		var phone_number = document.getElementById('phone').value;
 
-
+		addClient(id_agent, first_name, last_name, address, city, email, phone_number)
 	}
 
-	function getUserData(){
+	function addClient(id_agent, first_name, last_name, address, city, email, phone_number){
+		var data = {
+			"id_agent": id_agent,
+			"first_name": first_name,
+			"last_name": last_name,
+			"address": address,
+			"city": city,
+			"email": email,
+			"phone_num": phone_number
+		}
+		myHttpPost('Agent/addClient', data).then(result => {
+			console.log("All user data: " + JSON.stringify(result));
+			if (result.success){
+				alert(result.message);
+				window.location.reload()
+			} else {
+				alert("An error has ocurred: " + result.message);
+			}
+			
+		}).catch(error => {
+			alert("An error has ocurred: " + error);
+		});
+	}
+	function getClientsData(myIdAgent) {
+		var params = {
+			"id_agent" : myIdAgent
+		}
+		myHttpGetVal('Client/getAllClients', params).then(data => {
+			console.log("All user data: " + JSON.stringify(data));
+			fillTable(data);
+		}).catch(error => {
+			alert("An error has ocurred: " + error);
+		});
+	}
+
+	function fillTable(data) {
+		var t = "";
+		for (var i = 0; i < data.agentClients.length; i++) {
+			var tr = "<tr>";
+			tr += "<td>" + data.agentClients[i].id_client + "</td>";
+			tr += "<td>" + data.agentClients[i].first_name + "</td>";
+			tr += "<td>" + data.agentClients[i].last_name + "</td>";
+			tr += "<td>" + data.agentClients[i].address + "</td>";
+			tr += "<td>" + data.agentClients[i].city + "</td>";
+			tr += "<td>" + data.agentClients[i].email + "</td>";
+			tr += "<td>" + data.agentClients[i].phone_num + "</td>";
+			tr += "<td>" + data.agentClients[i].last_contact + "</td>";
+			tr += "<td>" + (data.agentClients[i].sw_active = 1 ? "YES" : "NO") + "</td>";
+			t += tr;
+		}
+		document.getElementById("client_table").innerHTML += t;
 
 	}
+	useEffect(()=>{
+		getClientsData(1); //Modify this so that the value comes from localstorage
+	})
 	return (
 		<div>
 			<section>
@@ -52,7 +104,7 @@ const Clients = () => {
 						<button onClick={createClient}>
 							Create Client
 						</button>
-						<table class="licensee_table" id="licensee_table" style={{ marginTop: '20px' }}>
+						<table class="client_table" id="client_table" style={{ marginTop: '20px' }}>
 							<tr>
 								<th>Client ID</th>
 								<th>First Name</th>
@@ -61,6 +113,7 @@ const Clients = () => {
 								<th>City</th>
 								<th>Email</th>
 								<th>Phone Number</th>
+								<th>Last contact</th>
 								<th>Is Active</th>
 							</tr>
 						</table>
