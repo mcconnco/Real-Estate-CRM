@@ -21,4 +21,15 @@ const myHttpGet = async function(controller) {
     const data = await response.json();
     return data;
 }
-module.exports = {myHttpGet, myHttpPost};
+
+const myHttpGetVal = async function(controller, params) {
+    const header = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json', }
+    };
+    var params = "?" + new URLSearchParams(params);
+    const response = await fetch(API_URL + controller + params, header);
+    const data = await response.json();
+    return data;
+}
+module.exports = {myHttpGet, myHttpPost, myHttpGetVal};
