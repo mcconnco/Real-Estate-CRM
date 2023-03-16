@@ -7,14 +7,14 @@ const { myHttpPost } = require('../service/httpService');
 
 const Licensees = () => {
 
-	function createLicensee() {
+	function createAgent() {
 		var id_user = document.getElementById('id_user_input').value
 		var agent_number = document.getElementById('id_licensee_input').value
-		createAgent(id_user, agent_number);
+		addAgent(id_user, agent_number);
 
 	}
 
-	function createAgent(id_user, agent_number) {
+	function addAgent(id_user, agent_number) {
 		var data = {
 			"id_user": id_user,
 			"agent_number": agent_number,
@@ -31,6 +31,11 @@ const Licensees = () => {
 			alert("An error has ocurred: " + error);
 		});
 	}
+
+	function addAgent() {
+
+	}
+
 	function getUsersData() {
 		myHttpGet('User/getAllUsers').then(data => {
 			console.log("All user data: " + JSON.stringify(data));

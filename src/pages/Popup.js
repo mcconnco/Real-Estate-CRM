@@ -1,31 +1,28 @@
 import React, {useState} from 'react';
+import createAgent from './licensees';
+import addAgent from './licensees';
 
 function PopupNewAgent() {
     const [showPopup, setShowPopup] = useState(false)
-    const [formData, setFormData] = useState({
-        licensee_number: '',
-        first_name: '',
-        last_name: '',
-        email: '',
-        phone_number: ''
-    });
+    const [user_id, setUser] = useState('');
+    const [licensee_number, setLicensee] = useState('');
 
 
     const togglePopup = () => {
         setShowPopup(!showPopup);
     }
 
-    const handleInputChange = (event) => {
-        const {licensee_number, value} = event.target;
-        setFormData({
-            ...formData,
-            [licensee_number]: value
-        });
+    const handleLicenseeChange = (event) => {
+        setLicensee(event.target.value);
+    }
+
+    const handleUserChange = (event) => {
+        setUser(event.target.value);
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(formData);
+        console.log('User: ${user_id}, Licensee : ${licensee_number}');
         togglePopup();
     }
 
@@ -37,9 +34,13 @@ function PopupNewAgent() {
                     <div className="popup-content">
                     <h2>New Agent info</h2>
                     <form onSubmit={handleSubmit}>
+                    <label>
+                            user_id:
+                            <input type="text" name="user_id" value={user_id} onChange={handleUserChange}/><br></br>
+                        </label>
                         <label>
                             licensee_number:
-                            <input type="text" name="licensee_number" value={formData.licensee_number} onChange={handleInputChange}/><br></br>
+                            <input type="text" name="licensee_number" value={licensee_number} onChange={handleLicenseeChange}/><br></br>
                         </label>
                         {/*<label>
                             first_name:
@@ -57,7 +58,7 @@ function PopupNewAgent() {
                             phone_number:
                             <input type="text" name="phone_number" value={formData.phone_number} onChange={handleInputChange}/><br></br>
                        </label>*/}
-                        <button type="submit">Submit</button>
+                        <button onClick = {createAgent}>Create Licensee</button>
                     </form>
                     <button onClick={togglePopup}>Close Popup</button>
                 </div>
