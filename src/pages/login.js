@@ -43,7 +43,7 @@ const Login = () => {
                     window.alert("Bad login")
                 }
 
-                window.location.reload()
+            window.location.reload()
             });
     }
 
