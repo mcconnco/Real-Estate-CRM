@@ -41,7 +41,7 @@ function PopupNewAgent() {
                             licensee_number:
                             <input type="text" name="licensee_number" value={formData.licensee_number} onChange={handleInputChange}/><br></br>
                         </label>
-                        <label>
+                        {/*<label>
                             first_name:
                             <input type="text" name="first_name" value={formData.first_name} onChange={handleInputChange}/><br></br>
                         </label>
@@ -49,7 +49,7 @@ function PopupNewAgent() {
                             last_name:
                             <input type="text" name="last_name" value={formData.last_name} onChange={handleInputChange}/><br></br>
                         </label>
-                        {/*<label>
+                        <label>
                             email:
                             <input type="text" name="email" value={formData.email} onChange={handleInputChange}/><br></br>
                         </label>

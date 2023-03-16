@@ -32,9 +32,6 @@ export default () => {
 
         <div className="column middle">
           <Route path="/">
-            <Login />
-          </Route>
-          <Route path="/dash">
             {currentUser && currentUser.id_role === 1 ? <Dash /> : <Login />}
           </Route>
           <Route path="/clients">
@@ -43,12 +40,12 @@ export default () => {
           <Route path="/licensees">
             {currentUser && currentUser.id_role === 1 ? <Licensees /> : <Login />}
           </Route>
-          <Route path="/properties">
+          {/*<Route path="/properties">
             {currentUser && currentUser.id_role === 1 ? <Properties /> : <Login />}
           </Route>
           <Route path="/transactions">
             {currentUser && currentUser.id_role === 1 ? <Transactions /> : <Login />}
-          </Route>
+          </Route>*/}
           <Route path="/settings">
             {currentUser && currentUser.id_role === 1 ? <Settings /> : <Login />}
           </Route>

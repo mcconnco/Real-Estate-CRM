@@ -30,12 +30,18 @@ const Login = () => {
         fetch('https://localhost:44334/api/Auth/authenticate', requestOptions)
             .then(response => response.json())
             .then(data => {
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('permissions', btoa(JSON.stringify(data.permissions)))
-                localStorage.setItem('user_details', btoa(JSON.stringify(data.user)))
+                if (data.success) {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('permissions', btoa(JSON.stringify(data.permissions)))
+                    localStorage.setItem('user_details', btoa(JSON.stringify(data.user)))
 
-                console.log("User permissions: " + atob(localStorage.getItem('permissions')))
-                console.log("User details: " + atob(localStorage.getItem('user_details')))
+                    console.log("User permissions: " + atob(localStorage.getItem('permissions')))
+                    console.log("User details: " + atob(localStorage.getItem('user_details')))
+                }
+
+                else {
+                    window.alert("Bad login")
+                }
 
                 window.location.reload()
             });
