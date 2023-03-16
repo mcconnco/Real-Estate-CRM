@@ -12,6 +12,10 @@ const Header = () => {
         setNavbarOpen(false)
     }*/
 
+    const handleLogout = () => {
+        localStorage.clear()
+    }
+
     return (
         
         <div className="navBar">
@@ -31,7 +35,7 @@ const Header = () => {
                     {/*<a href = "/properties" className = "burger-option">Properties</a>*/}
                     {/*<a href = "/transactions" className = "burger-option">Transactions</a>*/}
                     <a href = "/account" className = "burger-footer">Settings</a>
-                    <button /*onClick = {localStorage.clear()}*/ href = "/" className = "burger-logout">Logout</button>
+                    <a href = "/" className = "burger-logout" onClick = {handleLogout}>Logout</a>
                 </ul>
 
             </nav>
