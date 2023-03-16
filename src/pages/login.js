@@ -4,7 +4,6 @@ import './pages.css';
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [open, setOpen] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -13,14 +12,6 @@ const Login = () => {
         const pass = e.target.elements.password.value
         console.log(`Logging in with ${username} and ${password}`);
         login(user, pass)
-    };
-
-    const handleUse = () => {
-        if (open) {
-            setOpen(false)
-        } else {
-            setOpen(true)
-        }
     }
 
     // Remember to use Authentication: 'Bearer {token}'} (on the header) for controllers other than the Login
@@ -41,8 +32,12 @@ const Login = () => {
             .then(data => {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('permissions', btoa(JSON.stringify(data.permissions)))
+                localStorage.setItem('user_details', btoa(JSON.stringify(data.user)))
 
-                console.log("User permissions: " + atob(localStorage.getItem('permissions')));
+                console.log("User permissions: " + atob(localStorage.getItem('permissions')))
+                console.log("User details: " + atob(localStorage.getItem('user_details')))
+
+                window.location.reload()
             });
     }
 
