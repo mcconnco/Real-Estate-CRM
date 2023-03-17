@@ -6,7 +6,6 @@ const { myHttpPost } = require('../service/httpService');
 const Clients = () => {
 
 	function createClient() {
-		var id_agent =  document.getElementById('id_agent').value; // This should come from localstorage
 		var first_name = document.getElementById('first_name').value;
 		var last_name = document.getElementById('last_name').value;
 		var address = document.getElementById('address').value;
@@ -14,12 +13,13 @@ const Clients = () => {
 		var email = document.getElementById('email').value;
 		var phone_number = document.getElementById('phone').value;
 
-		addClient(id_agent, first_name, last_name, address, city, email, phone_number)
+		addClient(first_name, last_name, address, city, email, phone_number)
 	}
 
-	function addClient(id_agent, first_name, last_name, address, city, email, phone_number){
+	function addClient(first_name, last_name, address, city, email, phone_number) {
+		var currentAgent = JSON.parse(atob(localStorage.getItem("user_details")));
 		var data = {
-			"id_agent": id_agent,
+			"id_agent": currentAgent.id_agent,
 			"first_name": first_name,
 			"last_name": last_name,
 			"address": address,
@@ -29,24 +29,27 @@ const Clients = () => {
 		}
 		myHttpPost('Agent/addClient', data).then(result => {
 			console.log("All user data: " + JSON.stringify(result));
-			if (result.success){
+			if (result.success) {
 				alert(result.message);
 				window.location.reload()
 			} else {
 				alert("An error has ocurred: " + result.message);
 			}
-			
+
 		}).catch(error => {
 			alert("An error has ocurred: " + error);
 		});
 	}
 	function getClientsData(myIdAgent) {
 		var params = {
-			"id_agent" : myIdAgent
+			"id_agent": myIdAgent
 		}
 		myHttpGetVal('Client/getAllClients', params).then(data => {
 			console.log("All user data: " + JSON.stringify(data));
-			fillTable(data);
+			if (data.success){
+				fillTable(data);
+			}
+			
 		}).catch(error => {
 			alert("An error has ocurred: " + error);
 		});
@@ -70,8 +73,10 @@ const Clients = () => {
 		document.getElementById("client_table").innerHTML += t;
 
 	}
-	useEffect(()=>{
-		getClientsData(1); //Modify this so that the value comes from localstorage
+	useEffect(() => {
+		var currentAgent = JSON.parse(atob(localStorage.getItem("user_details")))
+		console.log('Current Agent ID: ' + currentAgent.id_agent)
+		getClientsData(currentAgent.id_agent); //Modify this so that the value comes from localstorage
 	})
 	return (
 		<div>
@@ -85,8 +90,6 @@ const Clients = () => {
 							Client page will contain a list of clients for the logged in user with the ability to add/remove/edit clients
 						</p>
 						<div style={{ marginBottom: '20px' }}>
-							<label for="fname">ID Agent, since login still not implemented:</label>
-							<input type="text" id="id_agent" placeholder="DB id agent"></input><br />
 							<label for="fname">First name:</label>
 							<input type="text" id="first_name" placeholder="Your first name"></input><br />
 							<label for="fname">Last name:</label>
