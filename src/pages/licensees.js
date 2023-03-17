@@ -51,7 +51,7 @@ const Licensees = () => {
 
 						<label for="fname">User:</label>
 						<input type="text" id="id_user_input" placeholder="User ID"></input><br/>
-						<label for="fname">Licencee Number:</label>
+						<label for="fname">Licensee Number:</label>
 						<input type="text" id="id_licensee_input" placeholder="Unique Agent Number"></input><br/>
 						<div>
 							<PopupNewAgent/>
