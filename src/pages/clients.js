@@ -77,7 +77,6 @@ const Clients = () => {
 		var currentAgent = JSON.parse(atob(localStorage.getItem("user_details")))
 		console.log('Current Agent ID: ' + currentAgent.id_agent)
 		getClientsData(currentAgent.id_agent); //Modify this so that the value comes from localstorage
-		// getClientsData(1); //Modify this so that the value comes from localstorage
 	})
 	return (
 		<div>
