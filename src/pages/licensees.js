@@ -1,40 +1,10 @@
 import React, { useEffect } from 'react';
 import PopupNewAgent from './Popup';
 import './pages.css';
-import popupNewAgent from './Popup';
 const { myHttpGet } = require('../service/httpService');
-const { myHttpPost } = require('../service/httpService');
+//const { myHttpPost } = require('../service/httpService');
 
 const Licensees = () => {
-
-	function createAgent() {
-		var id_user = document.getElementById('id_user_input').value
-		var agent_number = document.getElementById('id_licensee_input').value
-		addAgent(id_user, agent_number);
-
-	}
-
-	function addAgent(id_user, agent_number) {
-		var data = {
-			"id_user": id_user,
-			"agent_number": agent_number,
-		}
-		myHttpPost('Agent/addAgent', data).then(result => {
-			console.log("All user data: " + JSON.stringify(result));
-			if (result.success){
-				alert(result.message);
-			} else {
-				alert("An error has ocurred: " + result.message);
-			}
-			
-		}).catch(error => {
-			alert("An error has ocurred: " + error);
-		});
-	}
-
-	function addAgent() {
-
-	}
 
 	function getUsersData() {
 		myHttpGet('User/getAllUsers').then(data => {

@@ -1,68 +1,64 @@
-import React, {useState} from 'react';
-import createAgent from './licensees';
-import addAgent from './licensees';
+import React, { useState } from 'react';
+const { myHttpPost } = require('../service/httpService');
 
 function PopupNewAgent() {
     const [showPopup, setShowPopup] = useState(false)
-    const [user_id, setUser] = useState('');
-    const [licensee_number, setLicensee] = useState('');
-
 
     const togglePopup = () => {
         setShowPopup(!showPopup);
     }
 
-    const handleLicenseeChange = (event) => {
-        setLicensee(event.target.value);
-    }
-
-    const handleUserChange = (event) => {
-        setUser(event.target.value);
-    }
-
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('User: ${user_id}, Licensee : ${licensee_number}');
+        var currentUser = JSON.parse(atob(localStorage.getItem("user_details")))
+        console.log('User:' + currentUser.id_user);
+        console.log('Licensee Number:' + document.getElementById('licensee_number').value);
         togglePopup();
     }
 
-    return(
+    function createAgent() {
+        var currentUser = JSON.parse(atob(localStorage.getItem("user_details")))
+        var id_user = currentUser.id_user //document.getElementById('user_id').value
+        var agent_number = document.getElementById('licensee_number').value
+        addAgent(id_user, agent_number);
+    }
+
+    function addAgent(id_user, agent_number) {
+		var data = {
+			"id_user": id_user,
+			"agent_number": agent_number,
+		}
+		myHttpPost('Agent/addAgent', data).then(result => {
+			console.log("All user data: " + JSON.stringify(result));
+			if (result.success){
+				alert(result.message);
+			} else {
+				alert("An error has ocurred: " + result.message);
+			}
+			
+		}).catch(error => {
+			alert("An error has ocurred: " + error);
+		});
+	}
+
+    return (
         <div>
             <button onClick={togglePopup}>Open Popup</button>
             {showPopup && (
                 <div className="popup-overlay">
                     <div className="popup-content">
-                    <h2>New Agent info</h2>
-                    <form onSubmit={handleSubmit}>
-                    <label>
-                            user_id:
-                            <input type="text" name="user_id" value={user_id} onChange={handleUserChange}/><br></br>
-                        </label>
-                        <label>
-                            licensee_number:
-                            <input type="text" name="licensee_number" value={licensee_number} onChange={handleLicenseeChange}/><br></br>
-                        </label>
-                        {/*<label>
-                            first_name:
-                            <input type="text" name="first_name" value={formData.first_name} onChange={handleInputChange}/><br></br>
-                        </label>
-                        <label>
-                            last_name:
-                            <input type="text" name="last_name" value={formData.last_name} onChange={handleInputChange}/><br></br>
-                        </label>
-                        <label>
-                            email:
-                            <input type="text" name="email" value={formData.email} onChange={handleInputChange}/><br></br>
-                        </label>
-                        <label>
-                            phone_number:
-                            <input type="text" name="phone_number" value={formData.phone_number} onChange={handleInputChange}/><br></br>
-                       </label>*/}
-                        <button onClick = {createAgent}>Create Licensee</button>
-                    </form>
-                    <button onClick={togglePopup}>Close Popup</button>
+                        <h2>New Agent info</h2>
+                        <form onSubmit={handleSubmit}>
+                            {/*<label>User ID:</label>
+                            <input type="text" id="user_id" placeholder='User ID' /><br />*/}
+                            <label>Licensee Number:</label>
+                            <input type="text" id="licensee_number" placeholder='Licensee Number' /><br />
+
+                            <button onClick={createAgent}>Create Licensee</button>
+                        </form>
+                        <button onClick={togglePopup}>Close Popup</button>
+                    </div>
                 </div>
-                </div>    
             )}
         </div>
     )
