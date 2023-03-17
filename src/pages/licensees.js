@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PopupNewAgent from './Popup';
+import PopupDeactivateAgent from './PopupDeleteAgent';
 import './pages.css';
 const { myHttpGet } = require('../service/httpService');
 //const { myHttpPost } = require('../service/httpService');
@@ -54,6 +55,9 @@ const Licensees = () => {
 						<input type="text" id="id_licensee_input" placeholder="Unique Agent Number"></input><br/>
 						<div>
 							<PopupNewAgent/>
+						</div>
+						<div>
+							<PopupDeactivateAgent />
 						</div>
 						{/*<button onClick={PopupNewAgent}>
 							Create New Licensee
