@@ -59,9 +59,6 @@ const Licensees = () => {
 						<div>
 							<PopupDeactivateAgent />
 						</div>
-						{/*<button onClick={PopupNewAgent}>
-							Create New Licensee
-						</button>*/}
 						<table class="licensee_table" id="licensee_table">
 							<tr>
 								<th>User ID</th>
