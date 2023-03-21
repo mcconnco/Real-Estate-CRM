@@ -66,10 +66,14 @@ const About = () => {
 						<br></br>
 
 						<h3>
-							Our Repository
+							Our Repositories
 						</h3>
 						<p>
-							Our repository...
+							Our repositories are both linked here:
+							<br></br>
+							<a href='https://github.com/mcconnco/Real-Estate-CRM'>Front End Repository</a>
+							<br></br>
+							<a href= 'https://github.com/mcconnco/Real-Estate-CRM-Backend'>Backend Repository</a>
 						</p>
 						<br></br>
 
