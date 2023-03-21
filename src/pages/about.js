@@ -26,7 +26,7 @@ const About = () => {
 						<br></br>
 
 						<h3>
-							The problem are we solving
+							The problem we are solving
 						</h3>
 						<p>
 							Current CRM's have numerous extra features. With all these extra features it is easy for the crucial 
