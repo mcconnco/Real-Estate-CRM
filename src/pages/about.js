@@ -8,7 +8,7 @@ const About = () => {
 				<div>
 					<div>
 						<h1>
-							About Real Estate CRM
+							Fast Link CRM
 						</h1>
 						<h4>
 							By Cody McConnell, Connor Bentzley, Ethan Ferte, Jonathan Beck, Moises Villareal Casas
