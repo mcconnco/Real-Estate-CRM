@@ -6,6 +6,7 @@ const { myHttpGet } = require('../service/httpService');
 //const { myHttpPost } = require('../service/httpService');
 
 const Licensees = () => {
+	var currentUser = JSON.parse(atob(localStorage.getItem("user_details")));
 
 	function getUsersData() {
 		myHttpGet('User/getAllUsers').then(data => {
@@ -54,7 +55,7 @@ const Licensees = () => {
 						<label for="fname">Licensee Number:</label>
 						<input type="text" id="id_licensee_input" placeholder="Unique Agent Number"></input><br/>
 						<div>
-							<PopupNewAgent/>
+							{currentUser.id_agent && <PopupNewAgent />}
 						</div>
 						<div>
 							<PopupDeactivateAgent />
