@@ -7,6 +7,7 @@ const Header = () => {
     
     const toggleMenu = () =>{
         setNavbarOpen(!navbarOpen)
+        
     }
     /*const closeMenu = () =>{
         setNavbarOpen(false)
@@ -34,8 +35,16 @@ const Header = () => {
                     <a href = "/licensees" className = "burger-option">Licensees</a>
                     {/*<a href = "/properties" className = "burger-option">Properties</a>*/}
                     {/*<a href = "/transactions" className = "burger-option">Transactions</a>*/}
-                    <a href = "/" className = "burger-footer">About</a>
-                    <a href = "/dash" className = "burger-logout" onClick = {handleLogout}>Logout</a>
+                    <a 
+                    style={{
+                        position: navbarOpen ? 'fixed' : ' ',
+                    }}
+                    href = "/" className = "burger-footer">About</a>
+                    <a 
+                    style={{
+                        position: navbarOpen ? 'fixed' : ' ',
+                    }}
+                    href = "/dash" className = "burger-logout" onClick = {handleLogout}>Logout</a>
                 </ul>
 
             </nav>

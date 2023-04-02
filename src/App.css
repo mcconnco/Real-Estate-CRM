@@ -90,23 +90,25 @@ body {
   border-color: #dc5303;
 
 }
+
 .burger-footer{
   color: #fff;
-  position: fixed;
+  /*this styling has been moved to header.js*/
+  /*position: fixed;*/
   bottom: 80px;
 }
 .burger-footer:hover{
   color: #dc5303;
 }
+
 .burger-logout{
   color: #fff;
-  position: fixed;
   bottom: 40px;
 }
+
 .burger-logout:hover{
   color: #dc5303;
 }
-
 /*styling for the button that leads to the account page*/
 .account-button{
   position: fixed;
