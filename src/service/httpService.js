@@ -32,4 +32,4 @@ const myHttpGetVal = async function(controller, params) {
     const data = await response.json();
     return data;
 }
-export default {myHttpGet, myHttpPost, myHttpGetVal};
+module.exports = {myHttpGet, myHttpPost, myHttpGetVal};
