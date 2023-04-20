@@ -3,9 +3,9 @@ import '../App.css';
 
 const Header = () => {
     
-    const [navbarOpen, setNavbarOpen] = useState(false)
+    /*const [navbarOpen, setNavbarOpen] = useState(false)*/
     
-    const toggleMenu = () =>{
+    /*const toggleMenu = () =>{
         setNavbarOpen(!navbarOpen)
         
     }
@@ -13,9 +13,9 @@ const Header = () => {
         setNavbarOpen(false)
     }*/
 
-    const handleLogout = () => {
+    /*const handleLogout = () => {
         localStorage.clear()
-    }
+    }*/
 
     return (
         
