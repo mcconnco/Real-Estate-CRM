@@ -26,16 +26,15 @@ const Header = () => {
                 <a href = "/account"><img className = "account-button" src="https://cdn4.iconfinder.com/data/icons/e-commerce-181/512/477_profile__avatar__man_-60.png"></img></a>
             </button>
             <nav className = "navBar">
-                <button onClick={toggleMenu}>
+                {/*<button onClick={toggleMenu}>
                     <img src="https://i.ibb.co/LJTPSJt/menu-burger-2.png" alt="menu-burger-2"></img>
                     {navbarOpen}
                 </button>
                 <ul className={`menuNav ${navbarOpen ? " showMenu" : ""}`}>
                     <a href = "/clients" className = "burger-option">Clients</a>
                     <a href = "/licensees" className = "burger-option">Licensees</a>
-                    {/*<a href = "/properties" className = "burger-option">Properties</a>*/}
-                    {/*<a href = "/transactions" className = "burger-option">Transactions</a>*/}
-                    <a 
+                    
+                    <a
                     style={{
                         position: navbarOpen ? 'fixed' : ' ',
                     }}
@@ -46,7 +45,9 @@ const Header = () => {
                     }}
                     href = "/dash" className = "burger-logout" onClick = {handleLogout}>Logout</a>
                 </ul>
-
+                */}
+                <a href="/clients">Clients</a>
+                <a href="/licensees">Licensees</a>
             </nav>
            
         </div>

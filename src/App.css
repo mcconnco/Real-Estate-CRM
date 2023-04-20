@@ -13,6 +13,7 @@ body {
 }
 
 .navBar a {
+  float: left;
   display: block;
   color: #fff;
   text-align: center;
