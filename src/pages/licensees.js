@@ -2,12 +2,41 @@ import React, { useEffect } from 'react';
 import PopupNewAgent from './Popup';
 import PopupDeactivateAgent from './PopupDeleteAgent';
 import './pages.css';
+import { Alert, Button } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import MyModalComponent from '../components/mymodal.component';
+
 const { myHttpGet } = require('../service/httpService');
-//const { myHttpPost } = require('../service/httpService');
+const { myHttpGetVal } = require('../service/httpService');
+
 
 const Licensees = () => {
 	var currentUser = JSON.parse(atob(localStorage.getItem("user_details")));
+	var modalData = {
+		title: 'Agent Data',
+		body: {
+			agent_number: "",
+			first_name: "",
+			last_name: "",
+			email: "",
+			phone_num: ""
+		}
+	};
+	const [modalIsOpen, setIsOpen] = React.useState(false);
+	const [myAgentData, setAgentData] = React.useState(false);
+	function openFromParent() {
+		setIsOpen(true);
+	}
 
+	function handleCloseModal(event, data) {
+		// console.log(event, data);
+		// alert(JSON.stringify(data));
+		setIsOpen(false);
+	}
+
+	function handleAfterOpen(event, data) {
+		console.log(event, data);
+	}
 	function getUsersData() {
 		myHttpGet('User/getAllUsers').then(data => {
 			console.log("All user data: " + JSON.stringify(data));
@@ -30,11 +59,28 @@ const Licensees = () => {
 			tr += "<td>" + data.users[i].datetime_create + "</td>";
 			t += tr;
 		}
-		document.getElementById("licensee_table").innerHTML += t;
+		// document.getElementById("licensee_table").innerHTML += t;
 
 	}
 
-	useEffect(()=>{
+	function searchAgent() {
+		var myAgentNumber = document.getElementById('id_licensee_input').value;
+		var params = {
+			"agent_number": myAgentNumber
+		}
+		myHttpGetVal('Agent/getAgentByNumber', params).then(data => {
+			console.log("Agent data: " + JSON.stringify(data));
+			if (data.success){
+				setAgentData(data.agent)
+				setIsOpen(true);
+			}else {
+				alert("Agent not found!");
+			}
+		}).catch(error => {
+			alert("An error has ocurred: " + error);
+		});
+	}
+	useEffect(() => {
 		getUsersData()
 	})
 
@@ -51,9 +97,17 @@ const Licensees = () => {
 						</p>
 
 						<label for="fname">User:</label>
-						<input type="text" id="id_user_input" placeholder="User ID"></input><br/>
+						<input type="text" id="id_user_input" placeholder="User ID"></input><br />
 						<label for="fname">Licensee Number:</label>
-						<input type="text" id="id_licensee_input" placeholder="Unique Agent Number"></input><br/>
+						<input type="text" id="id_licensee_input" placeholder="Unique Agent Number"></input>
+						<button onClick={searchAgent}>Search</button>
+						<MyModalComponent
+							dynData={modalData}
+							agent_data={myAgentData}
+							IsModalOpened={modalIsOpen}
+							onCloseModal={handleCloseModal}
+							onAfterOpen={handleAfterOpen}
+						/>
 						<div>
 							{currentUser.id_agent && <PopupNewAgent />}
 						</div>
