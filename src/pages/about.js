@@ -79,9 +79,6 @@ const About = () => {
 
 					</div>
 				</div>
-                <div className='enter-site'>
-                    <a href='/dash' >Enter Site</a>
-                </div>
 			</section>
 		</div>
 	);
