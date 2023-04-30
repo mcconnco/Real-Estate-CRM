@@ -12,6 +12,22 @@ body {
   justify-content: center;
 }
 
+.dashButton {
+  float: left;
+  color:#dc5303;
+
+
+}
+
+.navBar1 {
+  float: right;
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 10px 55px;
+  text-decoration: none;
+}
+
 .navBar a {
   float: left;
   display: block;
@@ -19,6 +35,14 @@ body {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+}
+
+.nav-clients-container {
+  position: fixed;
+  justify-content: right;
+  right: 100;
+  top: 0;
+  visibility: visible;
 }
 
 .popup-overlay {

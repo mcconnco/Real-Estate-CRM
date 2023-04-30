@@ -10,9 +10,9 @@ import Dash from "./pages/index";
 import Clients from "./pages/clients";
 import Licensees from "./pages/licensees";
 import Login from "./pages/login";
-import Properties from "./pages/properties";
+/*import Properties from "./pages/properties";*/
 import About from "./pages/about"
-import Transactions from "./pages/transactions";
+/*import Transactions from "./pages/transactions";*/
 import Settings from "./pages/settings";
 import Account from "./pages/account"
 
