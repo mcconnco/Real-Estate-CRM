@@ -126,12 +126,12 @@ body {
   color: #dc5303;
 }
 
-.burger-logout{
+.login-logout-button{
   color: #fff;
   bottom: 40px;
 }
 
-.burger-logout:hover{
+.login-logout-button:hover{
   color: #dc5303;
 }
 /*styling for the button that leads to the account page*/

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import '../App.css';
+import Login from "../pages/login";
 
 const Header = () => {
     
@@ -16,6 +17,17 @@ const Header = () => {
     const handleLogout = () => {
         localStorage.clear()
     }
+    
+    function handleLogin () {
+        <Login />
+    }
+
+    var currentUser = []
+
+    if (localStorage.getItem("user_details")) {
+        currentUser = JSON.parse(atob(localStorage.getItem("user_details")))
+      }
+
 
     return (
         
@@ -47,7 +59,11 @@ const Header = () => {
                 */}
                 <a href="/clients">Clients</a>
                 <a href="/licensees">Licensees</a>
-                <a href = "/" className = "logout" onClick = {handleLogout}>Logout</a>
+                {currentUser && currentUser.id_role === 1 ? (
+                    <a href = "/" id = "login-logout-button" onClick = {handleLogout}>Logout</a>
+                ) : (
+                    <a href = "/login" id = "login-logout-button" onClick = {handleLogin()}>Login</a>
+                )}
             </nav>
            
         </div>
