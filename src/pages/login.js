@@ -6,6 +6,19 @@ const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    //create new account params
+    const [newUsername, setNewUsername] = useState("");
+    const [newPassword, setNewPassword] = useState("");
+
+    const [accountOpen, setAccountOpen] = useState(false)
+
+    const toggleMenu = () => {
+        setAccountOpen(!accountOpen)
+    }
+    const closeMenu = () => {
+        setAccountOpen(false)
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // Perform login logic here
@@ -44,7 +57,7 @@ const Login = () => {
                     window.alert("Bad login")
                 }
 
-            window.location.reload()
+                window.location.reload()
             });
     }
 
@@ -73,6 +86,31 @@ const Login = () => {
                         <br />
                         <button type="submit">Login</button>
                     </form>
+                    <button onClick={toggleMenu}>Create Account</button>
+                    {accountOpen &&
+                        <form>
+                            <input
+                                className="userInput"
+                                type="text"
+                                name="username"
+                                placeholder="Desired Username"
+                                value={newUsername}
+                                onChange={(e) => setNewUsername(e.target.value)}
+                            />
+                            <br />
+                            <input
+                                className="userInput"
+                                type="password"
+                                name="password"
+                                placeholder="Desired Password"
+                                value={newPassword}
+                                onChange={(e) => setNewPassword(e.target.value)}
+                            />
+                            <br />
+                            <button type="submit">Register</button>
+                            <button onClick={toggleMenu}>Close</button>
+                        </form>
+                    }
                 </div>
             </section>
         </div>
