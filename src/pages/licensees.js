@@ -9,7 +9,7 @@ import MyModalComponent from '../components/mymodal.component';
 const { myHttpGet } = require('../service/httpService');
 const { myHttpGetVal } = require('../service/httpService');
 
-
+/*Get data needed from Agents table in database to populate Agents table in website*/
 const Licensees = () => {
 	var currentUser = JSON.parse(atob(localStorage.getItem("user_details")));
 	var modalData = {
@@ -37,6 +37,7 @@ const Licensees = () => {
 	function handleAfterOpen(event, data) {
 		console.log(event, data);
 	}
+
 	function getUsersData() {
 		myHttpGet('User/getAllUsers').then(data => {
 			console.log("All user data: " + JSON.stringify(data));
@@ -45,9 +46,11 @@ const Licensees = () => {
 			alert("An error has ocurred: " + error);
 		});
 	}
-
+	/*Applies all retrieved data to the table on the Agents page*/
 	function fillTable(data) {
 		var t = "";
+		/*Until we reach the end of the data, place the user id, first name, last name, active status, admin flag, and account creation
+		to the table*/
 		for (var i = 0; i < data.users.length; i++) {
 			var tr = "<tr>";
 			tr += "<td>" + data.users[i].id_user + "</td>";

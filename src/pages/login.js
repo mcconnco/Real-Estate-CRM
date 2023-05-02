@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './pages.css';
 
+{/*create the basic login structure for all users*/}
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
