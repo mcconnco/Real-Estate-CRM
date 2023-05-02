@@ -55,6 +55,25 @@ const Clients = () => {
 		});
 	}
 
+	/* helper function used to clear the current client table*/
+	function clearTable(){
+
+		document.getElementById("client_table").innerHTML = "";
+		var th = "";
+		th += "<th>Client ID</th>";
+		th += "<th>First Name</th>";
+		th += "<th>Last Name</th>";
+		th += "<th>Address</th>";
+		th += "<th>City</th>";
+		th += "<th>Email</th>";
+		th += "<th>Phone Number</th>";
+		th += "<th>Last Contact</th>";
+		th += "<th>Is Active</th>";
+
+		document.getElementById("client_table").innerHTML += th;
+
+	}
+
 	function fillTable(data) {
 		var t = "";
 		for (var i = 0; i < data.agentClients.length; i++) {
@@ -73,20 +92,24 @@ const Clients = () => {
 		document.getElementById("client_table").innerHTML += t;
 	}
 
+
 	function getClient(data, agentName){
-		var response = "";
+		var t = "";
 		var found = false;
 		for(var i = 0; i<data.agentClients.length; i++){
 			if(agentName === data.agentClients[i].first_name){
-				response += "Id: " + data.agentClients[i].id_client + "\n";
-				response += "First Name: " + data.agentClients[i].first_name + "\n";
-				response += "Last Name: " + data.agentClients[i].last_name + "\n";
-				response += "Address: " + data.agentClients[i].address + "\n";
-				response += "City: " + data.agentClients[i].city + "\n";
-				response += "Email: " + data.agentClients[i].email + "\n";
-				response += "Phone: " + data.agentClients[i].phone_num + "\n";
-				response += "Last Contact: " + data.agentClients[i].last_contact;
-				alert(response);
+				clearTable();
+				t += "<tr>";
+				t += "<td>" + data.agentClients[i].id_client + "</td>";
+				t += "<td>" + data.agentClients[i].first_name + "</td>";
+				t += "<td>" + data.agentClients[i].last_name + "</td>";
+				t += "<td>" + data.agentClients[i].address + "</td>";
+				t += "<td>" + data.agentClients[i].city + "</td>";
+				t += "<td>" + data.agentClients[i].email + "</td>";
+				t += "<td>" + data.agentClients[i].phone_num + "</td>";
+				t += "<td>" + data.agentClients[i].last_contact + "</td>";
+				t += "<td>" + (data.agentClients[i].sw_active = 1 ? "YES" : "NO") + "</td>";
+				document.getElementById("client_table").innerHTML += t;
 				found = true;
 			}
 
@@ -113,11 +136,21 @@ const Clients = () => {
 			alert("An error has ocurred: " + error);
 		});
 	}
+
+	function searchAllClientsButton(){
+		var currentAgent = JSON.parse(atob(localStorage.getItem("user_details")))
+		console.log('Current Agent ID: ' + currentAgent.id_agent)
+		clearTable();
+		getClientsData(currentAgent.id_agent); //Modify this so that the value comes from localstorage
+	}
+
+	/*This was commented out when the search client feature was added*/
+	/*
 	useEffect(() => {
 		var currentAgent = JSON.parse(atob(localStorage.getItem("user_details")))
 		console.log('Current Agent ID: ' + currentAgent.id_agent)
 		getClientsData(currentAgent.id_agent); //Modify this so that the value comes from localstorage
-	})
+	})*/
 	return (
 		<div>
 			<section>
@@ -152,18 +185,9 @@ const Clients = () => {
 							<input type="text" id="id_client_input" placeholder="Client Name"></input>
 							<button onClick={searchClient}>Search</button>
 						</div>
+						<button onClick={searchAllClientsButton}>See all clients</button>
 						<table class="client_table" id="client_table" style={{ marginTop: '20px' }}>
-							<tr>
-								<th>Client ID</th>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>Address</th>
-								<th>City</th>
-								<th>Email</th>
-								<th>Phone Number</th>
-								<th>Last contact</th>
-								<th>Is Active</th>
-							</tr>
+							{/*Code moved to clearTable and fillTable functions*/}
 						</table>
 					</div>
 				</div>

@@ -64,6 +64,11 @@ body {
   padding: 20px;
 }
 
+.client_table, th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
 .licensee_table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -126,12 +131,12 @@ body {
   color: #dc5303;
 }
 
-.login-logout-button{
+.burger-logout{
   color: #fff;
   bottom: 40px;
 }
 
-.login-logout-button:hover{
+.burger-logout:hover{
   color: #dc5303;
 }
 /*styling for the button that leads to the account page*/
