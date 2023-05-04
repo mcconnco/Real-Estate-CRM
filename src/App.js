@@ -74,7 +74,7 @@ export default () => {
           {/*Direct user to the Login page*/}
           <Route path="/login">
             {/*Allow user to login if they provide valid credentials*/}
-            <Login />
+            <Login redirect="/"/>
           </Route>
 
           {/*Direct user to Account page*/}

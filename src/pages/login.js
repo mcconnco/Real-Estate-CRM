@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './pages.css';
 
-const Login = () => {
+const Login = ({redirect}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -109,6 +109,9 @@ const Login = () => {
 
                     console.log("User permissions: " + atob(localStorage.getItem('permissions')))
                     console.log("User details: " + atob(localStorage.getItem('user_details')))
+                    if (redirect) {
+                        window.history.pushState({}, null, redirect)
+                    }
                 }
 
                 else {
