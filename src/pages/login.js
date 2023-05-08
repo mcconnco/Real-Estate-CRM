@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './pages.css';
+import { json } from "react-router-dom";
 
 const Login = ({redirect}) => {
     const [username, setUsername] = useState("");
@@ -60,9 +61,9 @@ const Login = ({redirect}) => {
                 "password": pass,
                 "email": email,
                 "phone_num": phone,
-                "id_user_create": 0,
+                "id_user_create": 1,
                 "sw_admin": 0,
-                "sw_agent": 0
+                "sw_agent": 1
             })
         };
         fetch('https://localhost:44334/api/User/register', requestOptions)
@@ -72,7 +73,9 @@ const Login = ({redirect}) => {
                     console.log("data: ", data)
                     window.alert("Account Created Successfully")
                 } else {
-                    window.alert("Account Creation Failed, please try again")
+                    console.log("data: ", data)
+                    var err = JSON.stringify(data.message)
+                    window.alert(err)
                 }
             });
     }
@@ -115,6 +118,7 @@ const Login = ({redirect}) => {
                 }
 
                 else {
+                    console.log("data: ", data)
                     window.alert("Bad login")
                 }
 

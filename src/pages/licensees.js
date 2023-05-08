@@ -62,7 +62,7 @@ const Licensees = () => {
 			tr += "<td>" + data.users[i].datetime_create + "</td>";
 			t += tr;
 		}
-		// document.getElementById("licensee_table").innerHTML += t;
+		document.getElementById("licensee_table").innerHTML += t;
 
 	}
 
@@ -95,12 +95,6 @@ const Licensees = () => {
 						<h1>
 							Licensees
 						</h1>
-						<p>
-							Licensees page will contain a list of licensed realtors and their contact information with the ability to add/remove/edit licensees and their information.
-						</p>
-
-						<label for="fname">User:</label>
-						<input type="text" id="id_user_input" placeholder="User ID"></input><br />
 						<label for="fname">Licensee Number:</label>
 						<input type="text" id="id_licensee_input" placeholder="Unique Agent Number"></input>
 						<button onClick={searchAgent}>Search</button>
