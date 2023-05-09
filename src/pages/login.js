@@ -129,7 +129,7 @@ const Login = ({redirect}) => {
     return (
         <div>
             <section>
-                <div className="dialog">
+                <div className="dialog" class="text-center">
                     <form onSubmit={handleSubmit}>
                         <input
                             className="userInput"
@@ -151,7 +151,7 @@ const Login = ({redirect}) => {
                         <br />
                         <button type="submit">Login</button>
                     </form>
-                    <button onClick={toggleMenu}>Create Account</button>
+                    <button onClick={toggleMenu} class="btn btn-primary">Create Account</button>
                     {accountOpen &&
                         <form onSubmit={newAccount}>
                             <input className="userInput" type="text" name="agentNum" placeholder="Agent Number" value={agentNum} onChange={(e) => setAgent(e.target.value)} />
