@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './pages.css';
+import PopupUpdateClient from './PopupUpdateClient';
 const { myHttpGetVal } = require('../service/httpService');
 const { myHttpPost } = require('../service/httpService');
 
@@ -184,6 +185,9 @@ const Clients = () => {
 							<label for="fname">Search Client:</label>
 							<input type="text" id="id_client_input" placeholder="Client Name"></input>
 							<button onClick={searchClient}>Search</button>
+						</div>
+						<div>
+							<PopupUpdateClient />
 						</div>
 						<button onClick={searchAllClientsButton}>See all clients</button>
 						<table class="client_table" id="client_table" style={{ marginTop: '20px' }}>
