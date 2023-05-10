@@ -111,7 +111,7 @@ const Licensees = () => {
 						<div>
 							<PopupDeactivateAgent />
 						</div>
-						<table class="licensee_table" id="licensee_table">
+						<table className="licensee_table" id="licensee_table">
 							<tr>
 								<th>User ID</th>
 								<th>First Name</th>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import '../App.css';
-import Login from "../pages/login";
 
 const Header = () => {
     
@@ -31,51 +30,39 @@ const Header = () => {
     return (
 
         /*Creates first part of navbar with profile button and home button*/
-        <div className="navBar">
+        <nav className="header navbar sticky-top navbar-expand">
             {/*Creates home button and assigns functionality*/}
+            <button type="button" className="btn btn-lg" >
             <a href = "/"><img src="https://1000logos.net/wp-content/uploads/2021/07/Oregon-State-Beavers-logo-500x281.png" width="50px"/></a>
-            
-            {/*Creates profile button and assigns functionality*/}
-            <button className = "account-button-container">
-                <a href = "/account"><img className = "account-button" src="https://cdn4.iconfinder.com/data/icons/e-commerce-181/512/477_profile__avatar__man_-60.png"></img></a>
             </button>
-
-            {/*Creates secondary navbar elements. Clients button, Licensees button, and the Logout/Login button*/}
-            <nav className = "navBar1">
-                {/*<button onClick={toggleMenu}>
-                    <img src="https://i.ibb.co/LJTPSJt/menu-burger-2.png" alt="menu-burger-2"></img>
-                    {navbarOpen}
-                </button>
-                <ul className={`menuNav ${navbarOpen ? " showMenu" : ""}`}>
-                    <a href = "/clients" className = "burger-option">Clients</a>
-                    <a href = "/licensees" className = "burger-option">Licensees</a>
-                    
-                    <a
-                    style={{
-                        position: navbarOpen ? 'fixed' : ' ',
-                    }}
-                    href = "/" className = "burger-footer">About</a>
-                    <a 
-                    style={{
-                        position: navbarOpen ? 'fixed' : ' ',
-                    }}
-                    href = "/dash" className = "burger-logout" onClick = {handleLogout}>Logout</a>
-                </ul>
-                */}
+    
+            <ul className="navbar-nav">
                 {/*Assign funcitonality to all secondary navbar elements*/}
-                <a href="/clients">Clients</a>
-                <a href="/licensees">Licensees</a>
+                <li className="nav-item">
+                    <a className="nav-link" href="/clients">Clients</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="/licensees">Licensees</a>
+                </li>
 
                 {/*If user is logged in, button is logout with funcitonality. 
                 If user is logged out, button is login with functionality*/}
+                <li className="nav-item">
                 {currentUser && currentUser.id_role === 1 ? (
-                    <a href = "/" id = "login-logout-button" onClick = {handleLogout}>Logout</a>
+                    <a className="nav-link" href = "/" id="login-logout-button" onClick = {handleLogout}>Logout</a>
                 ) : (
-                    <a href = "/login" id = "login-logout-button">Login</a>
+                    <a className="nav-link" href = "/login" id="login-logout-button">Login</a>
                 )}
-            </nav>
+                </li>
+
+                {/*Creates profile button and assigns functionality*/}
+                <button className="btn btn-orange">
+                    <a href = "/account"><img src="https://cdn4.iconfinder.com/data/icons/e-commerce-181/512/477_profile__avatar__man_-60.png"></img></a>
+                </button>
+
+            </ul>
            
-        </div>
+        </nav>
         
     );
 };

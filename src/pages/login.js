@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import './pages.css';
-import { json } from "react-router-dom";
 
 const Login = ({redirect}) => {
     const [username, setUsername] = useState("");
@@ -129,10 +128,10 @@ const Login = ({redirect}) => {
     return (
         <div>
             <section>
-                <div className="dialog" class="text-center">
+                <div className="dialog text-center">
                     <form onSubmit={handleSubmit}>
                         <input
-                            className="userInput"
+                            className="userInput border rounded-pill"
                             type="text"
                             name="username"
                             placeholder="Username"
@@ -141,7 +140,7 @@ const Login = ({redirect}) => {
                         />
                         <br />
                         <input
-                            className="userInput"
+                            className="userInput border rounded-pill"
                             type="password"
                             name="password"
                             placeholder="Password"
@@ -149,9 +148,9 @@ const Login = ({redirect}) => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         <br />
-                        <button type="submit">Login</button>
+                        <button type="submit" className="login-btn rounded-pill">Login</button>
                     </form>
-                    <button onClick={toggleMenu} class="btn btn-primary">Create Account</button>
+                    <button onClick={toggleMenu} className="btn btn-link btn-sm text-primary" >Create Account</button>
                     {accountOpen &&
                         <form onSubmit={newAccount}>
                             <input className="userInput" type="text" name="agentNum" placeholder="Agent Number" value={agentNum} onChange={(e) => setAgent(e.target.value)} />

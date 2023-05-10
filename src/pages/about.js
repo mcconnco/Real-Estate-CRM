@@ -85,9 +85,13 @@ const About = () => {
 						<p>
 							Our repositories are both linked here:
 							<br></br>
-							<a href='https://github.com/mcconnco/Real-Estate-CRM'>Front End Repository</a>
+							<button className="btn btn-link">
+								<a href='https://github.com/mcconnco/Real-Estate-CRM'>Front End Repository</a>
+							</button>
 							<br></br>
-							<a href= 'https://github.com/mcconnco/Real-Estate-CRM-Backend'>Backend Repository</a>
+							<button className="btn btn-link">
+								<a href= 'https://github.com/mcconnco/Real-Estate-CRM-Backend'>Backend Repository</a>
+							</button>
 						</p>
 						<br></br>
 
