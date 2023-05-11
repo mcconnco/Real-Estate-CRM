@@ -64,7 +64,7 @@ function PopupUpdateClient() {
 
     return(
         <div>
-            <button onClick={togglePopup}>Update a Client</button>
+            <button className="updateClient rounded-pill" onClick={togglePopup}>Update Client</button>
             {showPopup && (
                 <div className="popup-overlay">
                     <div className="popup-content">

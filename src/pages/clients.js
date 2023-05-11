@@ -59,7 +59,7 @@ const Clients = () => {
 	/* helper function used to clear the current client table*/
 	function clearTable(){
 
-		document.getElementById("client_table").innerHTML = "";
+		document.getElementById("clientTable").innerHTML = "";
 		var th = "";
 		th += "<th>Client ID</th>";
 		th += "<th>First Name</th>";
@@ -71,7 +71,7 @@ const Clients = () => {
 		th += "<th>Last Contact</th>";
 		th += "<th>Is Active</th>";
 
-		document.getElementById("client_table").innerHTML += th;
+		document.getElementById("clientTable").innerHTML += th;
 
 	}
 
@@ -90,7 +90,7 @@ const Clients = () => {
 			tr += "<td>" + (data.agentClients[i].sw_active = 1 ? "YES" : "NO") + "</td>";
 			t += tr;
 		}
-		document.getElementById("client_table").innerHTML += t;
+		document.getElementById("clientTable").innerHTML += t;
 	}
 
 
@@ -110,7 +110,7 @@ const Clients = () => {
 				t += "<td>" + data.agentClients[i].phone_num + "</td>";
 				t += "<td>" + data.agentClients[i].last_contact + "</td>";
 				t += "<td>" + (data.agentClients[i].sw_active = 1 ? "YES" : "NO") + "</td>";
-				document.getElementById("client_table").innerHTML += t;
+				document.getElementById("clientTable").innerHTML += t;
 				found = true;
 			}
 
@@ -165,11 +165,11 @@ const Clients = () => {
 						</p>
 						<div style={{ marginBottom: '20px' }}>
 							<label for="fname">First name:</label>
-							<input type="text" id="first_name" placeholder="Your first name"></input><br />
+							<input type="text" id="first_name" placeholder="Client first name"></input><br />
 							<label for="fname">Last name:</label>
-							<input type="text" id="last_name" placeholder="Your last name"></input><br />
+							<input type="text" id="last_name" placeholder="Client last name"></input><br />
 							<label for="fname">Address:</label>
-							<input type="text" id="address" placeholder="Your address"></input><br />
+							<input type="text" id="address" placeholder="Client address"></input><br />
 							<label for="fname">City:</label>
 							<input type="text" id="city" placeholder="City"></input><br />
 							<label for="fname">Email:</label>
@@ -178,19 +178,25 @@ const Clients = () => {
 							<input type="text" id="phone" placeholder="+1(999)999-9999"></input><br />
 						</div>
 
-						<button onClick={createClient}>
+						<button className="createClient rounded-pill" onClick={createClient}>
 							Create Client
 						</button>
 						<div>
-							<label for="fname">Search Client:</label>
-							<input type="text" id="id_client_input" placeholder="Client Name"></input>
-							<button onClick={searchClient}>Search</button>
-						</div>
-						<div>
 							<PopupUpdateClient />
 						</div>
-						<button onClick={searchAllClientsButton}>See all clients</button>
-						<table class="client_table" id="client_table" style={{ marginTop: '20px' }}>
+						<ul className="list-group list-group-horizontal">
+							<li className="list-group-item">
+								<button className="SeeClients rounded-pill"  onClick={searchAllClientsButton}>See all clients</button>
+							</li>
+							<li className="list-group-item">
+								<div>
+									<label for="fname">Search Client:</label>
+									<input type="text" id="id_client_input" placeholder="Client Name"></input>
+									<button className="searchClient rounded-pill" onClick={searchClient}>Search</button>
+								</div>
+							</li>
+						</ul>
+						<table class="table table-bordered" id="clientTable">
 							{/*Code moved to clearTable and fillTable functions*/}
 						</table>
 					</div>
