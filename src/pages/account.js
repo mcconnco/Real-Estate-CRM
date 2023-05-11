@@ -1,96 +1,120 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import './pages.css';
 const { myHttpGetVal } = require('../service/httpService');
 
 
 const Account = () => {
-    function getUserData(myIdAgent){
+    function getUserData(myIdAgent) {
         var params = {
-			"id_user" : myIdAgent
-		}
+            "id_user": myIdAgent
+        }
         myHttpGetVal('User/getUser', params).then(data => {
-			console.log("User data: " + JSON.stringify(data));
-			fillAccountPage(data);
-		}).catch(error => {
-			alert("An error has ocurred: " + error);
-		});
+            console.log("User data: " + JSON.stringify(data));
+            fillAccountPage(data);
+        }).catch(error => {
+            alert("An error has ocurred: " + error);
+        });
     }
 
     function fillAccountPage(data) {
         console.log("First Name: " + data.user.first_name)
         var t = ""
         t = data.user.first_name
-        document.getElementById("first_name").innerHTML += t
+        document.getElementById("first_name").value = t
         t = data.user.last_name
-        document.getElementById("last_name").innerHTML += t
+        document.getElementById("last_name").value = t
         t = data.user.email
-        document.getElementById("email").innerHTML += t
-        document.getElementById("public_email").innerHTML += t        
+        document.getElementById("email").value = t
+        document.getElementById("public_email").value = t
         t = data.user.phone_num
-        document.getElementById("phone_number").innerHTML += t
+        document.getElementById("phone_number").value = t
         t = data.user.username
-        document.getElementById("username").innerHTML += t
+        document.getElementById("username").value = t
         t = data.user.datetime_create
         document.getElementById("birthday").innerHTML += t
 
-        t=data.user.sw_active
-        if(t===1){
+        t = data.user.sw_active
+        if (t === 1) {
             document.getElementById("active").innerHTML += "Active"
-        }else{
+        } else {
             document.getElementById("active").innerHTML += "Inactive"
         }
-        t=data.user.sw_admin
-        if(t===1){
+        t = data.user.sw_admin
+        if (t === 1) {
             document.getElementById("admin_status").innerHTML += "Admin"
-        }else{
-            document.getElementById("admin_status").innerHTML += "Agent" 
+        } else {
+            document.getElementById("admin_status").innerHTML += "Agent"
         }
 
     }
-    useEffect(()=>{
+
+    function updateUser(){
+        alert("functionality not implemented");     
+    }
+
+    useEffect(() => {
         var currentAgent = JSON.parse(atob(localStorage.getItem("user_details")))
         console.log('Current Agent ID: ' + currentAgent.id_user)
         getUserData(currentAgent.id_user); //Modify this so that the value comes from localstorage
     })
-	return (
-		<div>
-			<section>
-				<div>
-					<div>
-						<h1>
-							Account Page
-						</h1>
-						<p id="admin_status">Account Permissions: </p>
-                        
+    return (
+        <div>
+            <section>
+                <div>
+                    <div>
+                        <h1>
+                            Account Page
+                        </h1>
+                        <p id="admin_status">Account Permissions: </p>
+
                         <h1>
                             Account Info
                         </h1>
                         <ul>
-                            <li id="first_name">Agent Name: </li>
-                            <li id="last_name">Last Name: </li>
-                            <li id="email">Email: </li>
-                            <li id="username">Username: </li>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">First name</label>
+                                <input type="email" class="form-control" id="first_name" placeholder="Enter first name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Last name</label>
+                                <input type="email" class="form-control" id="last_name" placeholder="Enter last name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter Email" />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Username</label>
+                                <input type="email" class="form-control" id="username" placeholder="Enter Username" />
+                            </div>
                             <li>Password: ****</li>
                             <li id="active">Account Status: </li>
                         </ul>
-                        
+
                         <h1>
                             Public Methods of Contact
                         </h1>
                         <ul>
-                            <li id="public_email">Public Email: </li>
-                            <li id="phone_number">Phone Number: </li>
+                        <div class="form-group">
+                                <label for="exampleInputEmail1">Public Email</label>
+                                <input type="email" class="form-control" id="public_email" placeholder="Enter public email" />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Phone Number</label>
+                                <input type="email" class="form-control" id="phone_number" placeholder="Enter Phone Number" />
+                            </div>
                             <li>Office Address: ****</li>
                         </ul>
+                        <button onClick={updateUser} className="login-btn rounded-pill">Update Account (Not Finished)</button>
                         <h1>
                             Account Birthday:
                         </h1>
                         <p id="birthday"></p>
-					</div>
-				</div>
-			</section>
-		</div>
-	);
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
 };
 
 export default Account
