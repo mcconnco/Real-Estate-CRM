@@ -39,19 +39,19 @@ const Header = () => {
             <ul className="navbar-nav">
                 {/*Assign funcitonality to all secondary navbar elements*/}
                 <li className="nav-item">
-                    <a className="nav-link" href="/clients">Clients</a>
+                    <a className="nav-link text-dark" href="/clients">Clients</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/licensees">Licensees</a>
+                    <a className="nav-link text-dark" href="/licensees">Licensees</a>
                 </li>
 
                 {/*If user is logged in, button is logout with funcitonality. 
                 If user is logged out, button is login with functionality*/}
                 <li className="nav-item">
                 {currentUser && currentUser.id_role === 1 ? (
-                    <a className="nav-link" href = "/" id="login-logout-button" onClick = {handleLogout}>Logout</a>
+                    <a className="nav-link text-dark" href = "/" id="login-logout-button" onClick = {handleLogout}>Logout</a>
                 ) : (
-                    <a className="nav-link" href = "/login" id="login-logout-button">Login</a>
+                    <a className="nav-link text-dark" href = "/login" id="login-logout-button">Login</a>
                 )}
                 </li>
 

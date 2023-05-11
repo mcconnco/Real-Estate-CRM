@@ -131,7 +131,7 @@ const Login = ({redirect}) => {
                 <div className="dialog text-center">
                     <form onSubmit={handleSubmit}>
                         <input
-                            className="userInput border rounded-pill"
+                            className="userInput border border-dark rounded-pill"
                             type="text"
                             name="username"
                             placeholder="Username"
@@ -140,7 +140,7 @@ const Login = ({redirect}) => {
                         />
                         <br />
                         <input
-                            className="userInput border rounded-pill"
+                            className="userInput border border-dark rounded-pill"
                             type="password"
                             name="password"
                             placeholder="Password"
