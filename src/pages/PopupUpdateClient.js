@@ -16,7 +16,7 @@ function updateClient(agent_id, client_id, first_name, last_name, address, city,
             "sw_active": sw_active,
         })
     };
-    fetch('https://localhost:44334/api/Agent/updateClient', requestOptions)
+    fetch('https://localhost:44334/api/Client/updateClient', requestOptions)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -129,7 +129,7 @@ function PopupUpdateClient() {
                                 name="email"
                                 id="email_input_id" 
                                 type="text" 
-                                value={city} 
+                                value={email} 
                                 onChange={(e) => setEmail(e.target.value)}/>
                                 <br></br>
                         </label>
@@ -138,7 +138,7 @@ function PopupUpdateClient() {
                                 name="phone_num"
                                 id="phone_num_input_id" 
                                 type="text" 
-                                value={city} 
+                                value={phone_num} 
                                 onChange={(e) => setPhoneNum(e.target.value)}/>
                                 <br></br>
                         </label>
