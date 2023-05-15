@@ -131,7 +131,7 @@ const Account = () => {
                                 <label>Password(not working)</label>
                                 <input type="email" class="form-control" id="password" placeholder="Enter New Password" />
                             </div>
-                            <li id="active">Account Status: </li>
+                            <p id="active">Account Status: </p>
                         </ul>
 
                         <h1>
