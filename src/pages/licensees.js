@@ -76,6 +76,9 @@ const Licensees = () => {
 			if (data.success){
 				setAgentData(data.agent)
 				setIsOpen(true);
+				var table = document.getElementById('licensee_table');
+				table.innerHTML='';
+
 			}else {
 				alert("Agent not found!");
 			}
