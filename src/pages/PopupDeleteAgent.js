@@ -55,7 +55,7 @@ function PopupDeactivateAgent() {
                                 onChange={(e) => setAgentId(e.target.value)}/>
                                 <br></br>
                         </label>
-                       
+                       <br></br>
                         <button className="rounded-pill" type ="submit">Deactivate Licensee</button>
                     </form>
                     <button className="rounded-pill" onClick={togglePopup}>Close Popup</button>

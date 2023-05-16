@@ -91,7 +91,7 @@ const Licensees = () => {
 						<table className="licensee_table table table-bordered table-striped" id="licensee_table">
 							<thead>
 								<tr>
-									<th scope="col">Agent ID</th>
+									<th scope="col">User ID</th>
 									<th scope="col">First Name</th>
 									<th scope="col">Last Name</th>
 									<th scope="col">Is Active</th>
