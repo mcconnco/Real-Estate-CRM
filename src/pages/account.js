@@ -1,9 +1,18 @@
 import React, { useEffect } from 'react';
+import { useState } from 'react';
 import './pages.css';
 const { myHttpGetVal } = require('../service/httpService');
 
 
 const Account = () => {
+
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleChange = () => {
+        setIsChecked(!isChecked);
+
+    }
+
     function getUserData(myIdAgent) {
         var params = {
             "id_user": myIdAgent
@@ -31,20 +40,20 @@ const Account = () => {
         t = data.user.username
         document.getElementById("username").value = t
         t = data.user.datetime_create
-        document.getElementById("birthday").innerHTML += t
+        document.getElementById("birthday").innerHTML = t
         
 
         t = data.user.sw_active
         if (t === 1) {
-            document.getElementById("active").innerHTML += "Active"
+            document.getElementById("active").innerHTML = "Active"
         } else {
-            document.getElementById("active").innerHTML += "Inactive"
+            document.getElementById("active").innerHTML = "Inactive"
         }
         t = data.user.sw_admin
         if (t === 1) {
-            document.getElementById("admin_status").innerHTML += "Admin"
+            document.getElementById("admin_status").innerHTML = "Admin"
         } else {
-            document.getElementById("admin_status").innerHTML += "Agent"
+            document.getElementById("admin_status").innerHTML = "Agent"
         }
 
     }
@@ -54,9 +63,10 @@ const Account = () => {
         var email = document.getElementById("email").value;
         var username = document.getElementById("username").value;
         var phone = document.getElementById("phone_number").value;
+        var pass = document.getElementById("password").value;
         var currentAgent = JSON.parse(atob(localStorage.getItem("user_details")));
         //a key part for the api/User/update call to work is that the user_mod_id matches the user_id in the request
-        updateUser(currentAgent.id_user, name, last, username, email, phone, currentAgent.id_user);
+        updateUser(currentAgent.id_user, name, last, username, email, phone, currentAgent.id_user, pass);
 
     }
 
@@ -69,9 +79,10 @@ const Account = () => {
                 "first_name": first_name,
                 "last_name": last_name,
                 "username": username,
+                "password": pass,
                 "email": email,
                 "phone_num": phone_num,
-                "sw_change_pass": 0,
+                "sw_change_pass": isChecked ? 1 : 0,
                 "sw_active": 1,
                 "id_user_mod": user_mod_id,
             })
@@ -105,7 +116,8 @@ const Account = () => {
                         <h1>
                             Account Page
                         </h1>
-                        <p id="admin_status">Account Permissions: </p>
+                        <label>Account Permissions:</label>
+                        <p id="admin_status"></p>
 
                         <h1>
                             Account Info
@@ -128,10 +140,13 @@ const Account = () => {
                                 <input type="email" class="form-control" id="username" placeholder="Enter Username" />
                             </div>
                             <div class="form-group">
-                                <label>Password(not working)</label>
+                                <label>Password</label>
                                 <input type="email" class="form-control" id="password" placeholder="Enter New Password" />
+                                <label>Change Password?</label>
+                                <input type="checkbox" checked={isChecked} onChange={handleChange}></input>
                             </div>
-                            <p id="active">Account Status: </p>
+                            <label>Account Status:</label>
+                            <p id="active"></p>
                         </ul>
 
                         <h1>
