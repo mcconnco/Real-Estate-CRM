@@ -47,13 +47,13 @@ export default () => {
           {/*Direct user to the Clients page*/}
           <Route path="/clients">
             {/*If the user is logged in access Clients page, otherwise direct to login until login successful*/}
-            {currentUser && currentUser.id_role === 1 ? <Clients /> : <Login />}
+            {currentUser && (currentUser.id_role === 1 || currentUser.id_role === 3) ? <Clients /> : <Login />}
           </Route>
           
           {/*Direct user to the Licensees page*/}
           <Route path="/licensees">
             {/*If the user is logged in access Licensees page, otherwise direct to login until login successful*/}
-            {currentUser && currentUser.id_role === 1 ? <Licensees /> : <Login />}
+            {currentUser && (currentUser.id_role === 1 || currentUser.id_role === 3) ? <Licensees /> : <Login />}
           </Route>
 
           {/* These pages are potential add ons in the future that will store property data and transaction data.
@@ -68,7 +68,7 @@ export default () => {
           {/*Direct user to the Settings page*/}
           <Route path="/settings">
             {/*If the user is logged in access Settings page, otherwise direct to login until login successful*/}
-            {currentUser && currentUser.id_role === 1 ? <Settings /> : <Login />}
+            {currentUser && (currentUser.id_role === 1 || currentUser.id_role === 3) ? <Settings /> : <Login />}
           </Route>
 
           {/*Direct user to the Login page*/}
@@ -80,7 +80,7 @@ export default () => {
           {/*Direct user to Account page*/}
           <Route path="/account">
             {/*If the user is logged in access Account page, otherwise direct to login until login successful*/}
-            {currentUser && currentUser.id_role === 1 ? <Account /> : <Login />}
+            {currentUser && (currentUser.id_role === 1 || currentUser.id_role === 3) ? <Account /> : <Login />}
           </Route>
 
         </div>
