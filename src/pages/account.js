@@ -25,13 +25,14 @@ const Account = () => {
         document.getElementById("last_name").value = t
         t = data.user.email
         document.getElementById("email").value = t
-        document.getElementById("public_email").value = t
+        document.getElementById("public_email").innerHTML = t
         t = data.user.phone_num
         document.getElementById("phone_number").value = t
         t = data.user.username
         document.getElementById("username").value = t
         t = data.user.datetime_create
         document.getElementById("birthday").innerHTML += t
+        
 
         t = data.user.sw_active
         if (t === 1) {
@@ -47,9 +48,48 @@ const Account = () => {
         }
 
     }
+    function handleSubmit(){
+        var name = document.getElementById("first_name").value;
+        var last = document.getElementById("last_name").value;
+        var email = document.getElementById("email").value;
+        var username = document.getElementById("username").value;
+        var phone = document.getElementById("phone_number").value;
+        var currentAgent = JSON.parse(atob(localStorage.getItem("user_details")));
+        //a key part for the api/User/update call to work is that the user_mod_id matches the user_id in the request
+        updateUser(currentAgent.id_user, name, last, username, email, phone, currentAgent.id_user);
 
-    function updateUser(){
-        alert("functionality not implemented");     
+    }
+
+    function updateUser(user_id, first_name, last_name, username, email, phone_num, user_mod_id, pass, sw_active, sw_change_pass){  
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json', },
+            body: JSON.stringify({
+                "id_user": user_id,
+                "first_name": first_name,
+                "last_name": last_name,
+                "username": username,
+                "email": email,
+                "phone_num": phone_num,
+                "sw_change_pass": 0,
+                "sw_active": 1,
+                "id_user_mod": user_mod_id,
+            })
+        };
+        fetch('https://localhost:44334/api/User/update', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log("User/Update success")
+                    alert("User Change Success!");
+    
+                }
+                else {
+                    alert("User Change Failure");
+                }
+    
+            window.location.reload()
+            });
     }
 
     useEffect(() => {
@@ -72,23 +112,26 @@ const Account = () => {
                         </h1>
                         <ul>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">First name</label>
+                                <label>First name</label>
                                 <input type="email" class="form-control" id="first_name" placeholder="Enter first name" />
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Last name</label>
+                                <label>Last name</label>
                                 <input type="email" class="form-control" id="last_name" placeholder="Enter last name" />
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email</label>
+                                <label>Email</label>
                                 <input type="email" class="form-control" id="email" placeholder="Enter Email" />
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Username</label>
+                                <label>Username</label>
                                 <input type="email" class="form-control" id="username" placeholder="Enter Username" />
                             </div>
-                            <li>Password: ****</li>
-                            <li id="active">Account Status: </li>
+                            <div class="form-group">
+                                <label>Password(not working)</label>
+                                <input type="email" class="form-control" id="password" placeholder="Enter New Password" />
+                            </div>
+                            <p id="active">Account Status: </p>
                         </ul>
 
                         <h1>
@@ -96,16 +139,15 @@ const Account = () => {
                         </h1>
                         <ul>
                         <div class="form-group">
-                                <label for="exampleInputEmail1">Public Email</label>
-                                <input type="email" class="form-control" id="public_email" placeholder="Enter public email" />
+                                <label>Public Email</label>
+                                <p id="public_email" ></p>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Phone Number</label>
+                                <label>Phone Number</label>
                                 <input type="email" class="form-control" id="phone_number" placeholder="Enter Phone Number" />
                             </div>
-                            <li>Office Address: ****</li>
                         </ul>
-                        <button onClick={updateUser} className="login-btn rounded-pill">Update Account (Not Finished)</button>
+                        <button onClick={handleSubmit} className="login-btn rounded-pill">Update Account</button>
                         <h1>
                             Account Birthday:
                         </h1>
