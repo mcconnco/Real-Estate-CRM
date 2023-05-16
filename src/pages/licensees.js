@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PopupNewAgent from './Popup';
 import PopupDeactivateAgent from './PopupDeleteAgent';
 import './pages.css';
@@ -23,23 +23,10 @@ const Licensees = () => {
 	};
 	const [modalIsOpen, setIsOpen] = React.useState(false);
 	const [myAgentData, setAgentData] = React.useState(false);
-	const tableHeader = (
-		<tr>
-			<th scope="col">User ID</th>
-			<th scope="col">First Name</th>
-			<th scope="col">Last Name</th>
-			<th scope="col">Is Active</th>
-			<th scope="col">Is Admin</th>
-			<th scope="col">Is Agent</th>
-			<th scope="col">Creation Date</th>
-		</tr>
-	);
+	const [tableData, setTableData] = useState([]);
 
 	function handleCloseModal(event, data) {
-		var table = document.getElementById('licensee_table');
-		table.innerHTML='';
 		setIsOpen(false);
-		table.appendChild(tableHeader);
 	}
 
 	function handleAfterOpen(event, data) {
@@ -49,44 +36,22 @@ const Licensees = () => {
 	function getUsersData() {
 		myHttpGet('User/getAllUsers').then(data => {
 			console.log("All user data: " + JSON.stringify(data));
-			fillTable(data);
+			setTableData(data.users);
 		}).catch(error => {
 			alert("An error has ocurred: " + error);
 		});
-	}
-
-	/*Applies all retrieved data to the table on the Agents page*/
-	function fillTable(data) {
-		var t = "";
-		/*Until we reach the end of the data, place the user id, first name, last name, active status, admin flag, and account creation
-		to the table*/
-		for (var i = 0; i < data.users.length; i++) {
-			var tr = "<tr>";
-			tr += "<td>" + data.users[i].id_user + "</td>";
-			tr += "<td>" + data.users[i].first_name + "</td>";
-			tr += "<td>" + data.users[i].last_name + "</td>";
-			tr += "<td>" + (data.users[i].sw_active = 1 ? "YES" : "NO") + "</td>";
-			tr += "<td>" + (data.users[i].sw_admin = 1 ? "YES" : "NO") + "</td>";
-			tr += "<td>" + (data.users[i].sw_agent = 1 ? "YES" : "NO") + "</td>";
-			tr += "<td>" + data.users[i].datetime_create + "</td>";
-			t += tr;
-		}
-		document.getElementById("licensee_table").innerHTML += t;
-
 	}
 
 	function searchAgent() {
 		var myAgentNumber = document.getElementById('id_licensee_input').value;
 		var params = {
 			"agent_number": myAgentNumber
-		}
+		};
 		myHttpGetVal('Agent/getAgentByNumber', params).then(data => {
 			console.log("Agent data: " + JSON.stringify(data));
 			if (data.success){
 				setAgentData(data.agent)
 				setIsOpen(true);
-				var table = document.getElementById('licensee_table');
-				table.innerHTML='';
 
 			}else {
 				alert("Agent not found!");
@@ -97,7 +62,7 @@ const Licensees = () => {
 	}
 	useEffect(() => {
 		getUsersData()
-	})
+	}, []);
 
 	return (
 		<div>
@@ -124,7 +89,30 @@ const Licensees = () => {
 							<PopupDeactivateAgent/>
 						</div>
 						<table className="licensee_table table table-bordered table-striped" id="licensee_table">
-							{tableHeader}
+							<thead>
+								<tr>
+									<th scope="col">Agent ID</th>
+									<th scope="col">First Name</th>
+									<th scope="col">Last Name</th>
+									<th scope="col">Is Active</th>
+									<th scope="col">Is Admin</th>
+									<th scope="col">Is Agent</th>
+									<th scope="col">Creation Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								{tableData.map((user)=>(
+									<tr key ={user.id_user}>
+										<td>{user.id_user}</td>
+										<td>{user.first_name}</td>
+										<td>{user.last_name}</td>
+										<td>{user.sw_active === 1 ? 'YES': 'NO'}</td>
+										<td>{user.sw_admin === 1 ? 'YES': 'NO'}</td>
+										<td>{user.sw_agent === 1 ? 'YES': 'NO'}</td>
+										<td>{user.datetime_create}</td>
+									</tr>
+								))}
+							</tbody>
 						</table>
 					</div>
 				</div>
