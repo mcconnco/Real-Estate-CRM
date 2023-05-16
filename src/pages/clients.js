@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import './pages.css';
 import PopupUpdateClient from './PopupUpdateClient';
 const { myHttpGetVal } = require('../service/httpService');
@@ -196,7 +195,7 @@ const Clients = () => {
 								</div>
 							</li>
 						</ul>
-						<table class="table table-bordered" id="clientTable">
+						<table class="table table-bordered table-striped" id="clientTable">
 							{/*Code moved to clearTable and fillTable functions*/}
 						</table>
 					</div>

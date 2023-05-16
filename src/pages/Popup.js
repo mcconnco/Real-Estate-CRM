@@ -43,7 +43,7 @@ function PopupNewAgent() {
 
     return (
         <div>
-            <button onClick={togglePopup}>Open Popup</button>
+            <button className="rounded-pill" onClick={togglePopup}>Open Popup</button>
             {showPopup && (
                 <div className="popup-overlay">
                     <div className="popup-content">
@@ -54,9 +54,9 @@ function PopupNewAgent() {
                             <label>Licensee Number:</label>
                             <input type="text" id="licensee_number" placeholder='Licensee Number' /><br />
 
-                            <button onClick={createAgent}>Create Licensee</button>
+                            <button className="rounded-pill" onClick={createAgent}>Create Licensee</button>
                         </form>
-                        <button onClick={togglePopup}>Close Popup</button>
+                        <button className="rounded-pill" onClick={togglePopup}>Close Popup</button>
                     </div>
                 </div>
             )}

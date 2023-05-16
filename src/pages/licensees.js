@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import PopupNewAgent from './Popup';
 import PopupDeactivateAgent from './PopupDeleteAgent';
 import './pages.css';
-import { Alert, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MyModalComponent from '../components/mymodal.component';
 
@@ -24,14 +23,23 @@ const Licensees = () => {
 	};
 	const [modalIsOpen, setIsOpen] = React.useState(false);
 	const [myAgentData, setAgentData] = React.useState(false);
-	function openFromParent() {
-		setIsOpen(true);
-	}
+	const tableHeader = (
+		<tr>
+			<th scope="col">User ID</th>
+			<th scope="col">First Name</th>
+			<th scope="col">Last Name</th>
+			<th scope="col">Is Active</th>
+			<th scope="col">Is Admin</th>
+			<th scope="col">Is Agent</th>
+			<th scope="col">Creation Date</th>
+		</tr>
+	);
 
 	function handleCloseModal(event, data) {
-		// console.log(event, data);
-		// alert(JSON.stringify(data));
+		var table = document.getElementById('licensee_table');
+		table.innerHTML='';
 		setIsOpen(false);
+		table.appendChild(tableHeader);
 	}
 
 	function handleAfterOpen(event, data) {
@@ -46,6 +54,7 @@ const Licensees = () => {
 			alert("An error has ocurred: " + error);
 		});
 	}
+
 	/*Applies all retrieved data to the table on the Agents page*/
 	function fillTable(data) {
 		var t = "";
@@ -100,7 +109,7 @@ const Licensees = () => {
 						</h1>
 						<label for="fname">Licensee Number:</label>
 						<input type="text" id="id_licensee_input" placeholder="Unique Agent Number"></input>
-						<button onClick={searchAgent}>Search</button>
+						<button className="search-btn rounded-pill" onClick={searchAgent}>Search</button>
 						<MyModalComponent
 							dynData={modalData}
 							agent_data={myAgentData}
@@ -109,21 +118,13 @@ const Licensees = () => {
 							onAfterOpen={handleAfterOpen}
 						/>
 						<div>
-							{currentUser.id_agent && <PopupNewAgent />}
+							{currentUser.id_agent && <PopupNewAgent/>}
 						</div>
 						<div>
-							<PopupDeactivateAgent />
+							<PopupDeactivateAgent/>
 						</div>
-						<table className="licensee_table" id="licensee_table">
-							<tr>
-								<th>User ID</th>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>Is Active</th>
-								<th>Is Admin</th>
-								<th>Is Agent</th>
-								<th>Creation Date</th>
-							</tr>
+						<table className="licensee_table table table-bordered table-striped" id="licensee_table">
+							{tableHeader}
 						</table>
 					</div>
 				</div>
@@ -134,4 +135,4 @@ const Licensees = () => {
 
 
 
-export default Licensees
+export default Licensees;

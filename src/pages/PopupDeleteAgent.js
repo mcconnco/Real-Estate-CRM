@@ -40,7 +40,7 @@ function PopupDeactivateAgent() {
 
     return(
         <div>
-            <button onClick={togglePopup}>Deactivate an Agent</button>
+            <button className="rounded-pill" onClick={togglePopup}>Deactivate an Agent</button>
             {showPopup && (
                 <div className="popup-overlay">
                     <div className="popup-content">
@@ -56,9 +56,9 @@ function PopupDeactivateAgent() {
                                 <br></br>
                         </label>
                        
-                        <button type ="submit">Deactivate Licensee</button>
+                        <button className="rounded-pill" type ="submit">Deactivate Licensee</button>
                     </form>
-                    <button onClick={togglePopup}>Close Popup</button>
+                    <button className="rounded-pill" onClick={togglePopup}>Close Popup</button>
                 </div>
                 </div>    
             )}
