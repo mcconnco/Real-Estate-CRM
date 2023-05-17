@@ -1,17 +1,9 @@
 import React, { useEffect } from 'react';
-import { useState } from 'react';
 import './pages.css';
 const { myHttpGetVal } = require('../service/httpService');
 
 
 const Account = () => {
-
-    const [isChecked, setIsChecked] = useState(false);
-
-    const handleChange = () => {
-        setIsChecked(!isChecked);
-
-    }
 
     function getUserData(myIdAgent) {
         var params = {
@@ -64,13 +56,23 @@ const Account = () => {
         var username = document.getElementById("username").value;
         var phone = document.getElementById("phone_number").value;
         var pass = document.getElementById("password").value;
+        var pass_conf = document.getElementById("password_confirm").value;
+        var change_pass = 0;
+        if (pass === pass_conf){
+            if(pass !== ""){
+                change_pass = 1;
+                alert('Password Change Success!');
+            }
+        }else{
+            alert("Password change failed, fields do not match.");
+        }
         var currentAgent = JSON.parse(atob(localStorage.getItem("user_details")));
         //a key part for the api/User/update call to work is that the user_mod_id matches the user_id in the request
-        updateUser(currentAgent.id_user, name, last, username, email, phone, currentAgent.id_user, pass);
+        updateUser(currentAgent.id_user, name, last, username, email, phone, currentAgent.id_user, pass, change_pass);
 
     }
 
-    function updateUser(user_id, first_name, last_name, username, email, phone_num, user_mod_id, pass, sw_active, sw_change_pass){  
+    function updateUser(user_id, first_name, last_name, username, email, phone_num, user_mod_id, pass, sw_change_pass, sw_Active){  
         const requestOptions = {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json', },
@@ -82,7 +84,7 @@ const Account = () => {
                 "password": pass,
                 "email": email,
                 "phone_num": phone_num,
-                "sw_change_pass": isChecked ? 1 : 0,
+                "sw_change_pass": sw_change_pass,
                 "sw_active": 1,
                 "id_user_mod": user_mod_id,
             })
@@ -142,8 +144,8 @@ const Account = () => {
                             <div class="form-group">
                                 <label>Password</label>
                                 <input type="email" class="form-control" id="password" placeholder="Enter New Password" />
-                                <label>Change Password?</label>
-                                <input type="checkbox" checked={isChecked} onChange={handleChange}></input>
+                                <label>Confirm Password</label>
+                                <input type="email" class="form-control" id="password_confirm" placeholder="Confirm New Password" />
                             </div>
                             <label>Account Status:</label>
                             <p id="active"></p>
