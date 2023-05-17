@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './pages.css';
-
 const { myHttpGetVal } = require('../service/httpService');
 
 
@@ -94,12 +93,11 @@ const Account = () => {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    console.log("User/Update success")
-                    alert("User Change Success!");
-    
+                    console.log("User/Update success");
+
                 }
                 else {
-                    alert("User Change Failure");
+                    console.log("User Change Failure");
                 }
     
             window.location.reload()
