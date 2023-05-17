@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './pages.css';
+
 const { myHttpGetVal } = require('../service/httpService');
 
 
@@ -143,9 +144,9 @@ const Account = () => {
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="email" class="form-control" id="password" placeholder="Enter New Password" />
+                                <input type="password" class="form-control" id="password" placeholder="Enter New Password" />
                                 <label>Confirm Password</label>
-                                <input type="email" class="form-control" id="password_confirm" placeholder="Confirm New Password" />
+                                <input type="password" class="form-control" id="password_confirm" placeholder="Confirm New Password" />
                             </div>
                             <label>Account Status:</label>
                             <p id="active"></p>
