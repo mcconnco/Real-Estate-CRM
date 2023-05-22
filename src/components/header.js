@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import '../App.css';
 
 const Header = () => {
@@ -33,7 +33,7 @@ const Header = () => {
         <nav className="header navbar sticky-top navbar-expand">
             {/*Creates home button and assigns functionality*/}
             <button type="button" className="btn btn-lg" >
-            <a href = "/"><img src="https://1000logos.net/wp-content/uploads/2021/07/Oregon-State-Beavers-logo-500x281.png" width="50px"/></a>
+            <a href = "/"><img src="https://i.ibb.co/wNt6jv6/logo.png" width="50px"/></a>
             </button>
     
             <ul className="navbar-nav">
