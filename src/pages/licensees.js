@@ -96,7 +96,6 @@ const Licensees = () => {
 									<th scope="col">Last Name</th>
 									<th scope="col">Is Active</th>
 									<th scope="col">Is Admin</th>
-									<th scope="col">Is Agent</th>
 									<th scope="col">Creation Date</th>
 								</tr>
 							</thead>
@@ -108,7 +107,6 @@ const Licensees = () => {
 										<td>{user.last_name}</td>
 										<td>{user.sw_active === 1 ? 'YES': 'NO'}</td>
 										<td>{user.sw_admin === 1 ? 'YES': 'NO'}</td>
-										<td>{user.sw_agent === 1 ? 'YES': 'NO'}</td>
 										<td>{user.datetime_create}</td>
 									</tr>
 								))}
