@@ -49,6 +49,8 @@ const Account = () => {
         }
 
     }
+
+    //Run when the Update Account button is clicked, Will run an updateUser with the data currently in the input fields (except passwords in some cases)
     function handleSubmit(){
         var name = document.getElementById("first_name").value;
         var last = document.getElementById("last_name").value;
@@ -59,6 +61,7 @@ const Account = () => {
         var pass_conf = document.getElementById("password_confirm").value;
         var change_pass = 0;
         if (pass === pass_conf){
+            //if the 2 password fields are the same but they are also empty, then nothing gets changed
             if(pass !== ""){
                 change_pass = 1;
                 alert('Password Change Success!');
@@ -107,7 +110,7 @@ const Account = () => {
     useEffect(() => {
         var currentAgent = JSON.parse(atob(localStorage.getItem("user_details")))
         console.log('Current Agent ID: ' + currentAgent.id_user)
-        getUserData(currentAgent.id_user); //Modify this so that the value comes from localstorage
+        getUserData(currentAgent.id_user); 
     })
     return (
         <div>
@@ -117,57 +120,58 @@ const Account = () => {
                         <h1>
                             Account Page
                         </h1>
-                        <label>Account Permissions:</label>
+
+                        <label class="fw-bold">Account Permissions:</label>
                         <p id="admin_status"></p>
 
                         <h1>
                             Account Info
                         </h1>
+
+                        <button onClick={handleSubmit} class="btn btn-outline-primary">Update Account</button>
+                        
+                        {/*The ul tags are a styling choice to indent elements while keeping them uniform*/ }
                         <ul>
-                            <div class="form-group">
-                                <label>First name</label>
-                                <input type="email" class="form-control" id="first_name" placeholder="Enter first name" />
-                            </div>
-                            <div class="form-group">
-                                <label>Last name</label>
-                                <input type="email" class="form-control" id="last_name" placeholder="Enter last name" />
-                            </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter Email" />
-                            </div>
-                            <div class="form-group">
-                                <label>Username</label>
-                                <input type="email" class="form-control" id="username" placeholder="Enter Username" />
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Enter New Password" />
-                                <label>Confirm Password</label>
-                                <input type="password" class="form-control" id="password_confirm" placeholder="Confirm New Password" />
-                            </div>
-                            <label>Account Status:</label>
+                            <label class="fw-bold">First name</label>
+                            <input class="form-control" id="first_name" placeholder="Enter first name" />
+                            
+                            <label class="fw-bold">Last name</label>
+                            <input class="form-control" id="last_name" placeholder="Enter last name" />
+                        
+                            <label class="fw-bold">Email</label>
+                            <input class="form-control" id="email" placeholder="Enter Email" />
+                            
+                            <label class="fw-bold">Username</label>
+                            <input class="form-control" id="username" placeholder="Enter Username" />
+                            
+                            
+                            <label class="fw-bold">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter New Password" />
+                            <label class="fw-bold">Confirm Password</label>
+                            <input type="password" class="form-control" id="password_confirm" placeholder="Confirm New Password" />
+        
+                            <label class="fw-bold">Account Status:</label>
                             <p id="active"></p>
                         </ul>
 
                         <h1>
                             Public Methods of Contact
                         </h1>
+
                         <ul>
-                        <div class="form-group">
-                                <label>Public Email</label>
-                                <p id="public_email" ></p>
-                            </div>
-                            <div class="form-group">
-                                <label>Phone Number</label>
-                                <input type="email" class="form-control" id="phone_number" placeholder="Enter Phone Number" />
-                            </div>
+                            <label class="fw-bold">Public Email</label>
+                            <p id="public_email" ></p>
+                        
+                            <label class="fw-bold">Phone Number</label>
+                            <input class="form-control" id="phone_number" placeholder="Enter Phone Number" />
                         </ul>
-                        <button onClick={handleSubmit} className="login-btn rounded-pill">Update Account</button>
+                        
                         <h1>
                             Account Birthday:
                         </h1>
-                        <p id="birthday"></p>
+                        <ul>
+                            <p id="birthday"></p>
+                        </ul>
                     </div>
                 </div>
             </section>
