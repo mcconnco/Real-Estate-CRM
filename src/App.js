@@ -5,7 +5,6 @@ import Header from "./components/header";
 import Route from "./components/route";
 import Footer from "./components/footer";
 
-
 import Dash from "./pages/index";
 import Clients from "./pages/clients";
 import Licensees from "./pages/licensees";

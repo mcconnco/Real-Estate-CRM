@@ -82,8 +82,6 @@ const Login = ({redirect}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Perform login logic here
-        const user = e.target.elements.username.value
-        const pass = e.target.elements.password.value
         console.log(`Logging in with ${username} and ${password}`);
         login(user, pass)
     }

@@ -9,7 +9,7 @@ const Header = () => {
         setNavbarOpen(!navbarOpen)
         
     }
-    /*const closeMenu = () =>{
+    const closeMenu = () =>{
         setNavbarOpen(false)
     }*/
 
