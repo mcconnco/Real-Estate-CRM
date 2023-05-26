@@ -16,20 +16,24 @@
     cursor: pointer;
   }
 
-  .dialog {
-    margin: 5px;
-    border: 1px solid black;
-    padding: 5px;
-    box-sizing: border-box;
-  }
-  
-  .userInput {
-    margin-bottom: 5px;
-  }
-  
-  .warning {
-    background: rgb(255, 215, 215);
-    border: 1px solid red;
-    padding: 5px;
-    margin: 5px;
-  }
+.dialog {
+  margin: 5px;
+  border: 1px solid black;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.userInput {
+  margin-bottom: 5px;
+}
+
+.warning {
+  background: rgb(255, 215, 215);
+  border: 1px solid red;
+  padding: 5px;
+  margin: 5px;
+}
+
+.enter-site {
+  text-align: center;
+}
