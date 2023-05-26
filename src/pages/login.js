@@ -83,7 +83,7 @@ const Login = ({redirect}) => {
         e.preventDefault();
         // Perform login logic here
         console.log(`Logging in with ${username} and ${password}`);
-        login(user, pass)
+        login(username, password)
     }
 
     // Remember to use Authentication: 'Bearer {token}'} (on the header) for controllers other than the Login
