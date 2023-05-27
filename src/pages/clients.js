@@ -95,9 +95,20 @@ const Clients = () => {
 
 	function getClient(data, agentName){
 		var t = "";
+		//found determines if the letters from the input name match a name in the database
 		var found = false;
+		//printed determines if a client got printed from this search
+		var printed = false;
 		for(var i = 0; i<data.agentClients.length; i++){
-			if(agentName === data.agentClients[i].first_name){
+			//search through each letter of the input to see if the name continues to match one from data
+			for(var j = 0; j<agentName.length; j++){
+				if(agentName[j].toLowerCase() === data.agentClients[i].first_name[j].toLowerCase()){
+					found = true;
+				}else{					
+					found = false;
+				}
+			}
+			if(found){
 				clearTable();
 				t += "<tr>";
 				t += "<td>" + data.agentClients[i].id_client + "</td>";
@@ -110,12 +121,12 @@ const Clients = () => {
 				t += "<td>" + data.agentClients[i].last_contact + "</td>";
 				t += "<td>" + (data.agentClients[i].sw_active = 1 ? "YES" : "NO") + "</td>";
 				document.getElementById("clientTable").innerHTML += t;
-				found = true;
+				printed = true;
 			}
-
 		}
-		if(!found){
-			alert("Client not found.")
+
+		if(!printed){
+			alert("Client not found.");
 		}
 	}
 
@@ -144,13 +155,6 @@ const Clients = () => {
 		getClientsData(currentAgent.id_agent); //Modify this so that the value comes from localstorage
 	}
 
-	/*This was commented out when the search client feature was added*/
-	/*
-	useEffect(() => {
-		var currentAgent = JSON.parse(atob(localStorage.getItem("user_details")))
-		console.log('Current Agent ID: ' + currentAgent.id_agent)
-		getClientsData(currentAgent.id_agent); //Modify this so that the value comes from localstorage
-	})*/
 	return (
 		<div>
 			<section>
