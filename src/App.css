@@ -24,6 +24,10 @@ body {
   background-color: black;
 }
 
+nav.navbar{
+  padding: 0;
+}
+
 .popup-overlay {
   position: fixed;
   top: 0;
