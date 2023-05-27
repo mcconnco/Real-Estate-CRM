@@ -106,6 +106,7 @@ const Clients = () => {
 					found = true;
 				}else{					
 					found = false;
+					break;
 				}
 			}
 			if(found){
