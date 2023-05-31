@@ -16,7 +16,7 @@ function updateClient(agent_id, client_id, first_name, last_name, address, city,
             "sw_active": sw_active,
         })
     };
-    fetch('https://localhost:44334/api/Client/updateClient', requestOptions)
+    fetch('https://fastlinkcrm.azurewebsites.net/api/Client/updateClient', requestOptions)
         .then(response => response.json())
         .then(data => {
             if (data.success) {

@@ -8,7 +8,7 @@ function delAgent(agent_num) {
             "id_agent": agent_num
         })
     };
-    fetch('https://localhost:44334/api/Agent/deleteAgent', requestOptions)
+    fetch('https://fastlinkcrm.azurewebsites.net/api/Agent/deleteAgent', requestOptions)
         .then(response => response.json())
         .then(data => {
             if (data.success) {

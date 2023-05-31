@@ -92,7 +92,7 @@ const Account = () => {
                 "id_user_mod": user_mod_id,
             })
         };
-        fetch('https://localhost:44334/api/User/update', requestOptions)
+        fetch('https://fastlinkcrm.azurewebsites.net/api/User/update', requestOptions)
             .then(response => response.json())
             .then(data => {
                 if (data.success) {

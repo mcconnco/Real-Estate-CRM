@@ -65,7 +65,7 @@ const Login = ({redirect}) => {
                 "sw_agent": 1
             })
         };
-        fetch('https://localhost:44334/api/User/register', requestOptions)
+        fetch('https://fastlinkcrm.azurewebsites.net/api/User/register', requestOptions)
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
@@ -99,7 +99,7 @@ const Login = ({redirect}) => {
                 "id_role": 0
             })
         };
-        fetch('https://localhost:44334/api/Auth/authenticate', requestOptions)
+        fetch('https://fastlinkcrm.azurewebsites.net/api/Auth/authenticate', requestOptions)
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
