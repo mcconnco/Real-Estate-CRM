@@ -1,4 +1,4 @@
-const API_URL = 'https://localhost:44334/api/';
+const API_URL = 'https://fastlinkcrm.azurewebsites.net/api/';
 
 const myHttpPost = async function(controller, input) {
     const header = {
