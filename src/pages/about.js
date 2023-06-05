@@ -48,33 +48,11 @@ const About = () => {
 						<br></br>
 
 						<h3>
-							What we have over our competition
-						</h3>
-						{/*Explanation of a practice more companies should adopt*/}
-						<p>
-							Our most formidable competition is SalesForce. They are one of the largest CRM's and assist real estate companies across 
-							the United States. They have numerous features including graphs & statistics. What we do to compete with them is the opposite.
-							We focus on teh basics of real estate on our site to make it less daunting for new realtors. 
-						</p>
-						<br></br>
-
-						<h3>
 							Contact Us
 						</h3>
 						{/*Contact info for team lead*/}
 						<p>
 							You can contact us with more questions at mcconnco@oregonstate.edu.
-						</p>
-						<br></br>
-
-						<h3>
-							How to run our software
-						</h3>
-						{/*Explanation of how to access our product*/}
-						<p>
-							Well, that's easy. Click the "Enter Site at the bottom of the page. Unfortunately, 
-							without having an account or having access to our login credentials, the site is closed off to 
-							protect our customer privacy and ensure a secure space to store data."
 						</p>
 						<br></br>
 
