@@ -33,7 +33,7 @@ const Header = () => {
         <nav className="header navbar sticky-top navbar-expand">
             {/*Creates home button and assigns functionality*/}
             <button type="button" className="btn btn-lg" >
-            <a href = "/"><img src="https://i.ibb.co/WkF4bGJ/croppedlogo.png" width="90px"/></a>
+            <a href = "/"><img src="https://cdn.discordapp.com/attachments/1024802615495766120/1114263662971076709/image.png" width="90px"/></a>
             </button>
     
             <ul className="navbar-nav">
